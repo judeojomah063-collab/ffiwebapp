@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franciscan Friars of the Immaculate - City of the Immaculate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-brown: #5d4037; --dark-brown: #3e2723; --light-brown: #8d6e63;
+            --beige: #e8e0d5; --cream: #f5f5dc; --gold: #d4a574;
+            --green: #7a9e7e; --dark-green: #4a5d23;
+        }
+        body { font-family: 'Lato', sans-serif; overflow-x: hidden; background: #1a1a1a; color: #333; }
+        .navbar {
+            position: fixed; top: 0; width: 100%; padding: 15px 50px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; transition: all 0.3s ease; background: transparent;
+        }
+        .navbar.scrolled { background: rgba(255,255,255,0.95); box-shadow: 0 2px 20px rgba(0,0,0,0.1); padding: 10px 50px; }
+        .logo { width: 70px; height: 70px; border-radius: 50%; overflow: hidden; border: 3px solid var(--gold); background: white; transition: transform 0.3s; }
+        .logo:hover { transform: scale(1.1); }
+        .logo img { width: 100%; height: 100%; object-fit: cover; }
+        .nav-menu { display: flex; gap: 30px; list-style: none; }
+        .nav-menu a { color: white; text-decoration: none; font-family: 'Cinzel', serif; font-size: 0.9rem; transition: color 0.3s; position: relative; }
+        .navbar.scrolled .nav-menu a { color: var(--dark-brown); }
+        .nav-menu a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s; }
+        .nav-menu a:hover::after { width: 100%; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .mobile-menu-btn span { width: 30px; height: 3px; background: white; transition: 0.3s; }
+        .navbar.scrolled .mobile-menu-btn span { background: var(--dark-brown); }
+
+        .hero-slider { position: relative; height: 100vh; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; }
+        .slide.active { opacity: 1; }
+        .slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .slide-content { position: relative; z-index: 2; text-align: center; color: white; max-width: 900px; padding: 0 20px; animation: fadeInUp 1s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .slide-content h1 { font-family: 'Cinzel', serif; font-size: 3.5rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); line-height: 1.2; }
+        .slide-content .quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
+        .btn-primary { display: inline-block; padding: 15px 40px; background: var(--gold); color: white; text-decoration: none; font-family: 'Cinzel', serif; font-size: 1.1rem; border-radius: 5px; transition: all 0.3s; border: 2px solid var(--gold); cursor: pointer; }
+        .btn-primary:hover { background: transparent; color: var(--gold); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .slider-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; transition: 0.3s; }
+        .dot.active { background: white; transform: scale(1.2); }
+        .slider-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.2); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.5rem; z-index: 10; transition: 0.3s; border: none; }
+        .slider-arrow:hover { background: rgba(255,255,255,0.4); transform: translateY(-50%) scale(1.1); }
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+
+        .section { padding: 100px 20px; position: relative; overflow: hidden; }
+        .section-beige { background: var(--beige); color: #333; }
+        .section-dark { background: var(--dark-brown); color: white; }
+        .section-green { background: var(--green); color: white; }
+        .section-cream { background: var(--cream); color: #333; }
+        .section-brown { background: var(--primary-brown); color: white; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { font-family: 'Cinzel', serif; font-size: 2.8rem; text-align: center; margin-bottom: 20px; position: relative; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .section-title.visible { opacity: 1; transform: translateY(0); }
+        .divider { width: 100px; height: 2px; background: currentColor; margin: 20px auto 50px; position: relative; opacity: 0; transition: opacity 0.8s ease 0.2s; }
+        .divider.visible { opacity: 1; }
+        .divider::after { content: '◆'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: inherit; padding: 0 10px; font-size: 1.2rem; }
+
+        .heritage-text { font-size: 1.3rem; line-height: 1.8; text-align: center; max-width: 900px; margin: 0 auto; font-weight: 300; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .heritage-text.visible { opacity: 1; transform: translateY(0); }
+
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 50px; }
+        .content-grid.reverse { direction: rtl; }
+        .content-grid.reverse > * { direction: ltr; }
+        .text-content { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease; }
+        .text-content.visible { opacity: 1; transform: translateX(0); }
+        .image-content { opacity: 0; transform: translateX(30px); transition: all 0.8s ease; }
+        .image-content.visible { opacity: 1; transform: translateX(0); }
+        .text-content h3 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--gold); }
+        .section-cream .text-content h3, .section-beige .text-content h3 { color: var(--dark-brown); }
+        .text-content p { line-height: 1.8; margin-bottom: 15px; font-size: 1.05rem; }
+        .image-wrapper { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .image-wrapper img { width: 100%; height: 400px; object-fit: cover; transition: transform 0.5s; }
+        .image-wrapper:hover img { transform: scale(1.05); }
+        .image-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0,0,0,0.7); color: white; padding: 15px; font-style: italic; transform: translateY(100%); transition: transform 0.3s; }
+        .image-wrapper:hover .image-caption { transform: translateY(0); }
+
+        .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .program-card { background: rgba(255,255,255,0.1); padding: 40px; text-align: center; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; opacity: 0; transform: translateY(30px); }
+        .program-card.visible { opacity: 1; transform: translateY(0); }
+        .program-card:hover { transform: translateY(-10px); background: rgba(255,255,255,0.15); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .program-card h3 { font-family: 'Cinzel', serif; font-size: 1.3rem; margin-bottom: 20px; }
+        .btn-outline { display: inline-block; padding: 12px 30px; border: 2px solid white; color: white; text-decoration: none; font-family: 'Cinzel', serif; border-radius: 30px; transition: all 0.3s; margin-top: 20px; }
+        .btn-outline:hover { background: white; color: var(--dark-brown); }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 50px; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s; opacity: 0; transform: scale(0.9); }
+        .gallery-item.visible { opacity: 1; transform: scale(1); }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+        .gallery-item img { width: 100%; height: 280px; object-fit: cover; display: block; }
+        .gallery-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay i { color: white; font-size: 2rem; }
+
+        .booking-section { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1548625149-fc4a29cf7092?w=1920'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        .booking-content { max-width: 800px; padding: 0 20px; }
+        .booking-content h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 20px; }
+
+        .form-wrapper { max-width: 900px; margin: 0 auto; background: #f0f7e6; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); overflow: hidden; }
+        .form-header { background: var(--green); color: white; padding: 40px; text-align: center; }
+        .form-logo { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 3px solid var(--gold); background: white; }
+        .form-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .form-header h2 { font-family: 'Cinzel', serif; font-size: 1.8rem; margin-bottom: 10px; }
+        .form-description { background: #e8f5e9; padding: 30px 40px; border-bottom: 2px solid var(--green); }
+        .form-description p { color: var(--dark-green); font-size: 1.1rem; line-height: 1.6; text-align: center; }
+        .form-container { padding: 40px; }
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--dark-green); font-weight: 600; }
+        .required::after { content: ' *'; color: #e74c3c; }
+        .form-control { width: 100%; padding: 12px 15px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem; transition: border-color 0.3s; font-family: 'Lato', sans-serif; }
+        .form-control:focus { outline: none; border-color: var(--green); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-control.error { border-color: #e74c3c; background: #ffeaea; }
+        .conditional-field { display: none; margin-top: 10px; padding: 15px; background: #e8f5e9; border-radius: 5px; border-left: 4px solid var(--green); }
+        .conditional-field.show { display: block; animation: slideDown 0.3s ease; }
+        @keyframes slideDown { from { opacity: 0; max-height: 0; } to { opacity: 1; max-height: 200px; } }
+        select.form-control { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; padding-right: 40px; }
+        .checkbox-group { display: flex; flex-direction: column; gap: 12px; }
+        .checkbox-item { display: flex; align-items: center; gap: 10px; }
+        .checkbox-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--green); }
+        .radio-group { display: flex; flex-direction: column; gap: 10px; }
+        .radio-item { display: flex; align-items: center; gap: 10px; }
+        .radio-item input[type="radio"] { width: 20px; height: 20px; accent-color: var(--green); }
+        .form-buttons { display: flex; gap: 20px; justify-content: center; margin-top: 40px; }
+        .btn-submit { padding: 15px 40px; background: var(--dark-green); color: white; border: none; border-radius: 5px; font-family: 'Cinzel', serif; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .btn-submit:hover { background: #3a4d1b; transform: translateY(-2px); }
+        .btn-back { padding: 15px 40px; background: var(--green); color: white; border: none; border-radius: 5px; font-family: 'Cinzel', serif; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .btn-back:hover { background: #6a8e6e; }
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .help-text { font-size: 0.9rem; color: #666; margin-top: 5px; }
+
+        .rules-section { background: #fff8e1; padding: 40px; margin-top: 40px; border-radius: 10px; border: 2px solid var(--gold); }
+        .rules-section h3 { font-family: 'Cinzel', serif; color: var(--dark-green); font-size: 1.5rem; margin-bottom: 20px; text-align: center; }
+        .rules-tabs { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
+        .rules-tab { padding: 10px 20px; background: #e0e0e0; border: none; border-radius: 5px; cursor: pointer; font-family: 'Cinzel', serif; transition: 0.3s; }
+        .rules-tab.active { background: var(--dark-green); color: white; }
+        .rules-content { display: none; }
+        .rules-content.active { display: block; }
+        .rules-list { list-style: none; padding: 0; }
+        .rules-list li { padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #333; line-height: 1.6; }
+        .rules-list li:before { content: "✓ "; color: var(--dark-green); font-weight: bold; margin-right: 10px; }
+
+        .bank-details { background: #f5f5f5; padding: 20px; border-radius: 5px; margin-top: 10px; border: 2px dashed var(--green); }
+        .bank-details h4 { color: var(--dark-green); margin-bottom: 15px; }
+        .account-info { background: white; padding: 15px; border-radius: 5px; margin: 10px 0; }
+        .account-label { font-weight: bold; color: #666; font-size: 0.9rem; }
+        .account-value { color: var(--dark-green); font-size: 1.1rem; margin-top: 5px; }
+
+        .recommendation-section { margin-top: 30px; padding: 30px; background: #e3f2fd; border-radius: 10px; border-left: 5px solid #1976d2; }
+        .recommendation-section h4 { color: #1976d2; margin-bottom: 15px; font-family: 'Cinzel', serif; }
+
+        .success-message { text-align: center; padding: 40px; display: none; }
+        .success-message.show { display: block; }
+        .success-message h3 { font-family: 'Cinzel', serif; color: var(--dark-green); font-size: 1.5rem; margin-bottom: 15px; }
+
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        .contact-card { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 10px; text-align: center; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; opacity: 0; transform: translateY(30px); }
+        .contact-card.visible { opacity: 1; transform: translateY(0); }
+        .contact-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); }
+        .contact-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; }
+        .contact-card h3 { font-family: 'Cinzel', serif; margin-bottom: 15px; }
+        .contact-card p { line-height: 1.6; }
+
+        .donate-content { text-align: center; max-width: 800px; margin: 0 auto; }
+        .donate-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 30px; }
+        .donation-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .donation-card { background: rgba(255,255,255,0.1); padding: 40px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s; opacity: 0; transform: scale(0.9); }
+        .donation-card.visible { opacity: 1; transform: scale(1); }
+        .donation-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.15); }
+        .donation-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
+        .donation-card h3 { font-family: 'Cinzel', serif; margin-bottom: 15px; }
+
+        footer { background: #1a1a1a; color: white; text-align: center; padding: 50px 20px; }
+        .footer-logo { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 50%; overflow: hidden; border: 3px solid var(--gold); background: white; }
+        .footer-logo img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-content p { margin: 10px 0; opacity: 0.8; }
+        .social-links { margin-top: 20px; display: flex; justify-content: center; gap: 20px; }
+        .social-links a { color: white; font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: var(--gold); }
+
+        .floating-booking { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: none; }
+        .floating-booking.visible { display: block; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+        .floating-booking .btn-primary { box-shadow: 0 5px 20px rgba(0,0,0,0.3); padding: 15px 30px; }
+
+        @media (max-width: 768px) {
+            .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: rgba(255,255,255,0.98); flex-direction: column; padding: 100px 40px; transition: right 0.3s ease; }
+            .nav-menu.active { right: 0; }
+            .nav-menu a { color: var(--dark-brown) !important; font-size: 1.2rem; }
+            .mobile-menu-btn { display: flex; }
+            .slide-content h1 { font-size: 2rem; }
+            .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .content-grid.reverse { direction: ltr; }
+            .form-row { grid-template-columns: 1fr; }
+            .programs-grid { grid-template-columns: 1fr; }
+            .navbar { padding: 15px 20px; }
+            .rules-tabs { flex-direction: column; }
+            .form-description, .form-container, .rules-section { padding: 20px; }
+            .section-title { font-size: 2rem; }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .timeline { position: relative; max-width: 800px; margin: 50px auto; padding: 20px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 2px; height: 100%; background: var(--gold); }
+        .timeline-item { margin-bottom: 50px; position: relative; opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .timeline-item.visible { opacity: 1; transform: translateY(0); }
+        .timeline-content { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 10px; width: 45%; position: relative; }
+        .section-cream .timeline-content, .section-beige .timeline-content { background: rgba(0,0,0,0.05); }
+        .timeline-item:nth-child(odd) .timeline-content { margin-left: auto; }
+        .timeline-date { position: absolute; left: 50%; transform: translateX(-50%); background: var(--gold); color: white; padding: 10px 20px; border-radius: 20px; font-family: 'Cinzel', serif; font-weight: bold; top: 0; }
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-content { width: calc(100% - 60px); margin-left: 60px !important; }
+            .timeline-date { left: 20px; transform: translateX(-50%); }
+        }
+
+        .quote-block { background: rgba(212, 165, 116, 0.2); border-left: 5px solid var(--gold); padding: 30px; margin: 30px 0; font-style: italic; font-size: 1.2rem; line-height: 1.8; }
+        .quote-block cite { display: block; margin-top: 15px; font-style: normal; font-weight: bold; color: var(--gold); }
+    </style>
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="FFI Logo">
+        </div>
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#who-we-are">Who We Are</a></li>
+            <li><a href="#retreat">Retreat Centre</a></li>
+            <li><a href="#booking">Booking</a></li>
+            <li><a href="#charism">Charism</a></li>
+            <li><a href="#shrine">Shrine</a></li>
+            <li><a href="#prayer">Prayer</a></li>
+            <li><a href="#penance">Penance</a></li>
+            <li><a href="#apostolic">Apostolic Work</a></li>
+            <li><a href="#common">Life in Common</a></li>
+            <li><a href="#habit">Our Habit</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#sisters">Our Sisters</a></li>
+            <li><a href="#day-with-mary">Day with Mary</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#donate">Donate</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Slider / Home Section -->
+    <section class="hero-slider" id="home">
+        <div class="slide active" style="background-image: url('slide1.jpg');">
+            <div class="slide-content">
+                <h1>Welcome to the City of the Immaculate</h1>
+                <p class="quote">"Start by doing what is necessary, then what is possible, and suddenly you are doing the impossible."</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">— St. Francis of Assisi</p>
+                <a href="#booking" class="btn-primary">Make a Booking</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('slide2.jpg');">
+            <div class="slide-content">
+                <h1>Franciscan Friars of the Immaculate</h1>
+                <p class="quote">"For it is in giving that we receive."</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">— St. Francis of Assisi</p>
+                <a href="#booking" class="btn-primary">Make a Booking</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('slide3.jpg');">
+            <div class="slide-content">
+                <h1>Following the Footsteps of St. Francis</h1>
+                <p class="quote">"Lord, make me an instrument of thy peace. Where there is hatred, let me sow love."</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">— Prayer of St. Francis</p>
+                <a href="#booking" class="btn-primary">Make a Booking</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('slide4.jpg');">
+            <div class="slide-content">
+                <h1>A Place of Prayer and Peace</h1>
+                <p class="quote">"While you are proclaiming peace with your lips, be careful to have it even more fully in your heart."</p>
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">— St. Francis of Assisi</p>
+                <a href="#booking" class="btn-primary">Make a Booking</a>
+            </div>
+        </div>
+
+        <button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
+        <button class="slider-arrow next" onclick="changeSlide(1)">›</button>
+
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </section>
+
+    <!-- Heritage Section -->
+    <section class="section section-beige">
+        <div class="container">
+            <p class="heritage-text">
+                Faithful to the footsteps of St. Francis of Assisi, the founder of the Franciscan Order, we continue the over 800 years of Franciscan tradition of helping souls and preaching the Gospel. The Franciscan Friars of the Immaculate were established to give fullest expression to the Marian dimension of St. Francis' ideal and Rule.
+            </p>
+        </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="section section-cream" id="who-we-are">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Sons of St. Francis</h3>
+                    <p>We are Franciscan Friars of the Immaculate, a religious institute founded in 1970 by Fr. Stefano Maria Manelli and Fr. Gabriel Maria Pellettieri. We strive to be perfectly conformed to the poor, humble, crucified Jesus through a life of charity, supernatural obedience, and poverty.</p>
+                    <p>We are totally consecrated to the Immaculate Virgin Mary after the example of St. Maximilian Mary Kolbe, giving the fullest expression to the Marian dimension of St. Francis' ideal and Rule.</p>
+                    <div class="quote-block">
+                        "We have been called to heal wounds, to unite what has fallen apart, and to bring home those who have lost their way."
+                        <cite>— St. Francis of Assisi</cite>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="https://kimi-web-img.moonshot.cn/img/uploads7.wikiart.org/91200101931b70f4dc53da66a69a0f88aa29d204.jpg" alt="St. Francis Preaching to the Birds">
+                        <div class="image-caption">St. Francis preaching to the birds - Giotto (1297-1299)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid reverse" style="margin-top: 60px;">
+                <div class="text-content">
+                    <h3>Our Mission</h3>
+                    <p>Following the footsteps of our Seraphic Father St. Francis, we embrace a life of Gospel poverty and minority. We seek to live the life and poverty of Our Most High Lord Jesus Christ and His Holy Mother, and to persevere in this to the end.</p>
+                    <p>Our mission is the care of souls and the cultivation of a lively faith, bringing the Good News to all people through our witness of life and apostolic works.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="st francisc.jpg" alt="St. Francis Receiving Stigmata">
+                        <div class="image-caption">St. Francis receiving the Stigmata - El Greco (1585-1590)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retreat and Event Centre Section -->
+    <section class="section section-dark" id="retreat">
+        <div class="container">
+            <h2 class="section-title">Retreat and Event Centre</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>A Place of Encounter</h3>
+                    <p>The City of the Immaculate Retreat Center offers a sacred space for those seeking deeper union with God. Nestled in a peaceful environment conducive to prayer and reflection, our center provides the perfect setting for directed retreats, days of recollection, and spiritual renewal.</p>
+                    <p>Whether you come for a 30-day directed retreat, an 8-day silent retreat, or a weekend of recollection, you will find here a welcoming home where you can "be still and know that I am God" (Psalm 46:10).</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="retreat chapel.jpg" alt="Retreat Chapel">
+                        <div class="image-caption">Our Retreat Chapel</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px;">
+                <h3 style="font-family: 'Cinzel', serif; text-align: center; margin-bottom: 30px; color: var(--gold);">Key Programs</h3>
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="divider"></div>
+                        <h3>30 Day Directed Retreat</h3>
+                        <p>An extended time of silence and prayer following the Spiritual Exercises, guided by an experienced director.</p>
+                        <a href="#booking" class="btn-outline">Book Now</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="divider"></div>
+                        <h3>8/6 Day Directed Retreat</h3>
+                        <p>A shorter retreat experience for those seeking spiritual renewal and deeper intimacy with Christ.</p>
+                        <a href="#booking" class="btn-outline">Book Now</a>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="divider"></div>
+                        <h3>Training for Spiritual Directors</h3>
+                        <p>Formation program for those called to accompany others on their spiritual journey.</p>
+                        <a href="#booking" class="btn-outline">Learn More</a>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px; text-align: center;">
+                    <h4 style="font-family: 'Cinzel', serif; margin-bottom: 20px; color: var(--gold);">Other Programs</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li>Lenten Day of Recollection</li>
+                        <li>Easter Weekend for Young Boys & Girls</li>
+                        <li>Advent Day of Recollection</li>
+                        <li>Monthly Days of Prayer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Life of Charism Section -->
+    <section class="section section-cream" id="charism">
+        <div class="container">
+            <h2 class="section-title">Life of Charism</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>The Franciscan Charism</h3>
+                    <p>Our charism is a gift of the Holy Spirit, inherited from St. Francis of Assisi and enriched by the example of St. Maximilian Kolbe. It is characterized by a total consecration to the Immaculate Virgin Mary, living the Gospel life according to the Rule of St. Francis, and an ardent zeal for the salvation of souls.</p>
+                    <p>We strive to live in the world without being of the world, maintaining a spirit of prayer and penance while actively engaging in apostolic works. Our charism calls us to be both contemplatives and missionaries, monks and apostles.</p>
+                    <div class="quote-block">
+                        "The deeds you do may be the only sermon some persons will hear today."
+                        <cite>— St. Francis of Assisi</cite>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="friars in prayer.jpg" alt="Franciscan Friars at Mass">
+                        <div class="image-caption">Our Friars in Prayer</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-grid" style="margin-top: 60px;">
+                <div class="gallery-item">
+                    <img src="church area1.jpg" alt="Monastery Gardens">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="church-image.jpg" alt="Cloister Walk">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="ffi 6.jpg" alt="Chapel Interior">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="ffi 5.jpg" alt="Franciscan Sisters">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franciscan Marian Shrine Section -->
+    <section class="section section-green" id="shrine">
+        <div class="container">
+            <h2 class="section-title">Franciscan Marian Shrine</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Under the Protection of Mary</h3>
+                    <p>At the heart of our religious family is devotion to the Immaculate Virgin Mary. St. Francis of Assisi was one of the greatest devotees of the Mother of God in the history of the Church. He sang Her praises in his Salutation to the Blessed Virgin Mary: "Hail O Lady, Holy Queen, Holy Mother of God, Virgin made church..."</p>
+                    <p>Our shrine is dedicated to Mary Immaculate, Mediatrix of All Graces. Here, pilgrims come to seek her maternal intercession, to consecrate themselves to her Immaculate Heart, and to draw closer to her Son through her powerful mediation.</p>
+                    <p>We continue the tradition of St. Maximilian Kolbe, who founded the Militia of the Immaculate to bring all souls to the Sacred Heart of Jesus through the Immaculate Heart of Mary.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="marian.jpg" alt="Our Lady Immaculate Statue">
+                        <div class="image-caption">Our Lady Immaculate</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block" style="background: rgba(255,255,255,0.2); border-left-color: white; margin-top: 50px;">
+                "Holy Virgin Mary, among women there is no one like You born into the world. You are the Daughter and the Handmaid of the Most High King and Father of Heaven, You are the Mother of Our Most Holy Lord Jesus Christ, Your are the Spouse of the Holy Spirit..."
+                <cite>— St. Francis of Assisi, Antiphon for the Office of the Passion</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Life of Prayer Section -->
+    <section class="section section-cream" id="prayer">
+        <div class="container">
+            <h2 class="section-title">Our Life of Prayer</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="prayer.jpg" alt="Eucharistic Adoration">
+                        <div class="image-caption">Eucharistic Adoration</div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <h3>The Foundation of Our Life</h3>
+                    <p>Prayer is the heart of our Franciscan life. We gather seven times a day to chant the Divine Office, offering the prayer of the Church to the Father through Christ in the Holy Spirit. The Holy Sacrifice of the Mass is the center and source of our day.</p>
+                    <p>We maintain a daily schedule that includes time for mental prayer, Eucharistic adoration, and the Holy Rosary. Following the example of St. Francis, we seek to pray always, making our entire life a continuous prayer of praise and thanksgiving to God.</p>
+                    <p>Our friaries are houses of prayer, where the faithful are welcome to join us in worship and to find silence and recollection before the Blessed Sacrament.</p>
+                </div>
+            </div>
+
+            <div class="content-grid" style="margin-top: 60px;">
+                <div class="text-content">
+                    <h3>The Franciscan Crown</h3>
+                    <p>In addition to the daily Rosary, we pray the Franciscan Crown, a seven-decade rosary honoring the seven joys of the Blessed Virgin Mary. This beautiful devotion, given to the Franciscan Order in the 15th century, weaves a spiritual crown for our Lady more pleasing than flowers.</p>
+                    <p>The seven joys are: The Annunciation, The Visitation, The Nativity of Our Lord, The Adoration of the Magi, The Finding of Jesus in the Temple, The Resurrection of Our Lord, and The Assumption and Coronation of Mary.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="st kolbe.jpg" alt="St. Maximilian Kolbe">
+                        <div class="image-caption">St. Maximilian Kolbe - Patron of our Marian Devotion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Life of Penance Section -->
+    <section class="section section-brown" id="penance">
+        <div class="container">
+            <h2 class="section-title">Our Life of Penance</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Following the Crucified Christ</h3>
+                    <p>Penance is an essential element of our Franciscan vocation. Following the example of St. Francis, who embraced "Lady Poverty" and bore the wounds of Christ in his own body, we seek to die to ourselves so that Christ may live in us.</p>
+                    <p>Our life of penance includes fasting and abstinence, manual labor, the humble acceptance of correction, and the willing embrace of suffering for the salvation of souls. We offer our daily mortifications in union with the sacrifice of Christ on the Cross.</p>
+                    <p>During Lent, we intensify our penitential practices, following the ancient Franciscan tradition of prayer, fasting, and almsgiving.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="penance.jpg" alt="Penitential Procession">
+                        <div class="image-caption">Penitential Procession</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block" style="margin-top: 50px;">
+                "We must hate our lower nature with its vices and sins; by living a worldly life, it would deprive us of the love of our Lord Jesus Christ and of eternal life."
+                <cite>— St. Francis of Assisi</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Apostolic Work Section -->
+    <section class="section section-cream" id="apostolic">
+        <div class="container">
+            <h2 class="section-title">Our Apostolic Work</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Preaching the Gospel</h3>
+                    <p>Following the command of our Lord to "go and make disciples of all nations," we engage in various apostolic works aimed at the salvation of souls. Our primary apostolate is the Retreat Center, where we offer spiritual direction and lead souls to deeper union with Christ.</p>
+                    <p>We also engage in parish missions, preaching, teaching the faith, and publishing. Inspired by St. Maximilian Kolbe, we use modern means of communication to spread the Gospel and promote devotion to the Immaculate Virgin.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="preaching.jpg" alt="Apostolic Work">
+                        <div class="image-caption">Serving the Poor</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-grid reverse" style="margin-top: 60px;">
+                <div class="text-content">
+                    <h3>Missionary Expansion</h3>
+                    <p>From our humble beginnings in Italy, we have grown to serve on five continents. Our missionary friars bring the Good News to the poor and marginalized, establishing houses of prayer and centers of evangelization throughout the world.</p>
+                    <p>We are committed to the New Evangelization, seeking to reawaken the faith in traditionally Christian lands and to bring the light of Christ to those who have not yet heard the Gospel.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="missionary.jpg" alt="Missionary Work">
+                        <div class="image-caption">Our Missionary Friars</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Life in Common Section -->
+    <section class="section section-beige" id="common">
+        <div class="container">
+            <h2 class="section-title">Our Life in Common</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="fraternity.jpg" alt="Franciscan Community">
+                        <div class="image-caption">Our Franciscan Family</div>
+                    </div>
+                </div>
+                <div class="text-content">
+                    <h3>Fraternity in Christ</h3>
+                    <p>Central to our vocation is life in fraternity. We live together as brothers, sharing all things in common, supporting one another in the spiritual life, and working together for the spread of the Kingdom.</p>
+                    <p>Our fraternities are places of mutual charity, where each friar is welcomed as Christ. We seek to create an atmosphere of joy and simplicity, where the love of Christ shines through our relationships with one another.</p>
+                    <p>Following the example of the early Church and the first Franciscans at Rivo Torto, we strive to live in true poverty and humility, serving one another in love.</p>
+                </div>
+            </div>
+
+            <div class="quote-block" style="margin-top: 50px;">
+                "A single sunbeam is enough to drive away many shadows."
+                <cite>— St. Francis of Assisi</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Habit Section -->
+    <section class="section section-dark" id="habit">
+        <div class="container">
+            <h2 class="section-title">Our Habit</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>The Franciscan Garment</h3>
+                    <p>Our habit is a visible sign of our consecration to God and our commitment to the Franciscan way of life. It consists of a simple tunic of gray-blue wool (for the Friars of the Immaculate), a cord cincture with three knots, and a capuche (hood).</p>
+                    <p>The three knots in our cord represent the three vows of Poverty, Chastity, and Obedience. Some friars add a fourth knot, representing our Marian vow of total consecration to the Immaculate Virgin.</p>
+                    <p>The habit reminds us daily of our call to follow Christ in the footsteps of St. Francis. When we put on this garment, we take up our cross to follow the Crucified Lord.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="habit.jpg" alt="Franciscan Habit">
+                        <div class="image-caption">The Franciscan Habit</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 10px;">
+                <h3 style="font-family: 'Cinzel', serif; text-align: center; margin-bottom: 30px; color: var(--gold);">Symbolism of the Habit</h3>
+                <div class="programs-grid" style="margin-top: 30px;">
+                    <div class="program-card" style="background: rgba(255,255,255,0.05);">
+                        <i class="fas fa-cross" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px;"></i>
+                        <h3>The Tunic</h3>
+                        <p>The simple robe represents our poverty and our solidarity with the poor. When laid out, it forms the shape of the cross.</p>
+                    </div>
+                    <div class="program-card" style="background: rgba(255,255,255,0.05);">
+                        <i class="fas fa-circle" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px;"></i>
+                        <h3>The Cord</h3>
+                        <p>The rope cincture symbolizes spiritual battle, chastity, and obedience. It girds us for the service of Christ.</p>
+                    </div>
+                    <div class="program-card" style="background: rgba(255,255,255,0.05);">
+                        <i class="fas fa-hat-cowboy" style="font-size: 2rem; color: var(--gold); margin-bottom: 15px;"></i>
+                        <h3>The Capuche</h3>
+                        <p>The hood reminds us to be hidden in Christ and to seek the solitude necessary for prayer and union with God.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="section section-cream" id="history">
+        <div class="container">
+            <h2 class="section-title">Our History</h2>
+            <div class="divider"></div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">1182-1226</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">St. Francis of Assisi</h3>
+                        <p>Born in Assisi, Italy, Francis renounces his wealthy inheritance to embrace a life of Gospel poverty. He founds the Franciscan Order and receives the stigmata, becoming a living image of the crucified Christ.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1894-1941</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">St. Maximilian Kolbe</h3>
+                        <p>A Conventual Franciscan friar who founded the Militia of the Immaculate and established Niepokalanow, the "City of the Immaculate," in Poland. Martyred at Auschwitz, offering his life for a fellow prisoner.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1970</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">The Beginning</h3>
+                        <p>Fr. Stefano Maria Manelli and Fr. Gabriel Maria Pellettieri begin a new form of Franciscan life at Casa Mariana in Frigento, Italy, seeking to live the fullness of the Franciscan vocation with special emphasis on Marian devotion.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1990</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">Erection as Institute</h3>
+                        <p>Pope John Paul II erects the Franciscan Friars of the Immaculate as a religious institute of diocesan right, recognizing the authenticity of their charism and mission in the Church.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">1998</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">Pontifical Right</h3>
+                        <p>On January 1, 1998, Pope John Paul II elevates the Institute to pontifical right, extending its mission to the universal Church and blessing its growth throughout the world.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Today</div>
+                    <div class="timeline-content">
+                        <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px; color: var(--gold);">Worldwide Mission</h3>
+                        <p>Today the Franciscan Friars of the Immaculate serve on five continents, continuing the mission of St. Francis and St. Maximilian to bring all souls to Christ through Mary Immaculate.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Sisters Section -->
+    <section class="section section-green" id="sisters">
+        <div class="container">
+            <h2 class="section-title">Our Sisters</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Franciscan Sisters of the Immaculate</h3>
+                    <p>Together with the Friars, the Franciscan Sisters of the Immaculate share the same charism and mission. Founded in 1993, the Sisters live the same Rule of St. Francis according to the Marian Traccia, consecrating themselves totally to the Immaculate Virgin.</p>
+                    <p>The Sisters engage in various apostolic works, including teaching, healthcare, and assisting in the retreat center. Their contemplative life of prayer supports the missionary activity of the whole Institute.</p>
+                    <p>Like Mary at the foot of the Cross, the Sisters stand with Christ in His suffering members, offering their lives for the salvation of souls.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="sisters.jpg" alt="Franciscan Sisters">
+                        <div class="image-caption">Our Sisters in Prayer</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-grid" style="margin-top: 60px;">
+                <div class="gallery-item">
+                    <img src="gallery1.jpg" alt="Sisters at Work">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery2.jpg" alt="Community Life">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery5.jpg" alt="Chapel Prayer">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery6.jpg" alt="Retreat Ministry">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- A Day with Mary Section -->
+    <section class="section section-cream" id="day-with-mary">
+        <div class="container">
+            <h2 class="section-title">A Day with Mary</h2>
+            <div class="divider"></div>
+
+            <div class="content-grid">
+                <div class="text-content">
+                    <h3>Marian Devotion and Evangelization</h3>
+                    <p>A Day with Mary is a Marian apostolate inspired by the message of Our Lady of Fatima. It offers instruction, devotion, and intercession based on the Fatima message of prayer, penance, and reparation.</p>
+                    <p>The day typically includes Holy Mass, the Rosary, Eucharistic adoration, and opportunities for confession. It is a time of grace and spiritual renewal, helping participants deepen their relationship with Mary and through her, with her Son.</p>
+                    <p>This apostolate, begun in England over 25 years ago, has spread worldwide. Our Franciscan Tertiaries and Friars organize these days to bring the message of Fatima to parishes and communities.</p>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="mary day.jpg" alt="Marian Devotion">
+                        <div class="image-caption">Adoration of the Blessed Sacrament</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; background: var(--beige); padding: 40px; border-radius: 10px;">
+                <h3 style="font-family: 'Cinzel', serif; text-align: center; margin-bottom: 30px; color: var(--dark-brown);">Schedule of A Day with Mary</h3>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <ul style="list-style: none; line-height: 2.5;">
+                        <li><strong>8:45 AM</strong> - Arrival and Welcome</li>
+                        <li><strong>9:00 AM</strong> - Holy Mass</li>
+                        <li><strong>10:15 AM</strong> - Rosary Procession</li>
+                        <li><strong>11:00 AM</strong> - Instruction on Marian Devotion</li>
+                        <li><strong>12:00 PM</strong> - Lunch</li>
+                        <li><strong>1:30 PM</strong> - Eucharistic Adoration</li>
+                        <li><strong>2:30 PM</strong> - Sacrament of Confession</li>
+                        <li><strong>3:30 PM</strong> - Consecration to Mary</li>
+                        <li><strong>4:00 PM</strong> - Benediction and Departure</li>
+                    </ul>
+                </div>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#contact" class="btn-primary">Contact Us to Host</a>
+                </div>
+            </div>
+
+            <div class="gallery-grid" style="margin-top: 60px;">
+                <div class="gallery-item">
+                    <img src="gallery3.jpg" alt="Our Lady Statue">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery4.jpg" alt="Mass Celebration">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery7.jpg" alt="Procession">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery8.jpg" alt="Shrine">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery9.jpg" alt="Community">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="gallery10.jpg" alt="Prayer">
+                    <div class="gallery-overlay"><i class="fas fa-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Make Booking CTA -->
+    <section class="booking-section" id="booking">
+        <div class="booking-content">
+            <div class="divider"></div>
+            <h2>FRANCISCAN FRIARS OF THE IMMACULATE</h2>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 2rem; margin-bottom: 30px;">MAKE A BOOKING</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">Begin your spiritual journey with us. Reserve your retreat date today.</p>
+        </div>
+    </section>
+
+    
+    <!-- Booking Form Section -->
+    <section class="section section-green" style="padding: 60px 20px;">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-header">
+                    <div class="form-logo">
+                        <img src="retreat.jpg" alt="FFI Logo">
+                    </div>
+                    <h2>Franciscan Friars of the Immaculate</h2>
+                    <p>City of the Immaculate Retreat Center</p>
+                </div>
+
+                <div class="form-description">
+                    <p>Welcome to the City of the Immaculate Retreat Center booking portal. Kindly complete this form to reserve your preferred retreat date. Dates are assigned on a first-come, first-served basis. You will be contacted after submission for confirmation and further arrangements.</p>
+                </div>
+
+                <div class="form-container">
+
+<form id="retreatForm" action="https://formsubmit.co/judeojomah063@gmail.com" method="POST" enctype="multipart/form-data">
+
+<input type="hidden" name="_subject" value="New Retreat Booking - Franciscan Friars">
+
+<input type="hidden" name="_captcha" value="false">
+
+<input type="hidden" name="_template" value="table">
+
+<input type="hidden" name="_next" value="https://immaculate-retreatbooking.com/thankyou.html">
+
+</div>
+                        <!-- Step 1 -->
+                        <div class="step active" id="step1">
+                            <div class="form-group">
+                                <label class="required">Name</label>
+                                <div class="form-row">
+                                    <div><input type="text" class="form-control" name="prefix" placeholder="Prefix" required></div>
+                                    <div><input type="text" class="form-control" name="firstName" placeholder="First Name" required></div>
+                                </div>
+                                <input type="text" class="form-control" name="lastName" placeholder="Last Name" style="margin-top: 15px;" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Email Address</label>
+                                <input type="email" class="form-control" name="email" placeholder="email@example.com" required>
+                                <p class="help-text">Indicate 'None' if email is not available</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Date of Birth</label>
+                                <input type="date" class="form-control" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferred Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" placeholder="+1234567890">
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="step" id="step2">
+                            <div class="form-group">
+                                <label class="required">Select Preferred Retreat Dates</label>
+                                <select class="form-control" name="retreatDates" id="retreatDates" required onchange="checkOtherOption(this, 'otherDateField')">
+                                    <option value="">Please Select</option>
+                                    <option value="4th-13th-Dec-2025">4th – 13th Dec. 2025 (Advent Retreat)</option>
+                                    <option value="14th-23rd-April-2026">14th – 23rd April 2026 (Easter Retreat)</option>
+                                    <option value="28th-April-7th-May-2026">28th April – 7th May 2026</option>
+                                    <option value="1st-10th-June-2026">1st – 10th June 2026</option>
+                                    <option value="13th-22nd-June-2026">13th – 22nd June 2026</option>
+                                    <option value="1st-10th-July-2026">1st – 10th July 2026</option>
+                                    <option value="1st-10th-Aug-2026">1st – 10th Aug 2026</option>
+                                    <option value="17th-26th-Aug-2026">17th – 26th Aug. 2026</option>
+                                    <option value="1st-10th-Sept-2026">1st – 10th Sept. 2026</option>
+                                    <option value="13th-22nd-Sept-2026">13th – 22nd Sept. 2026</option>
+                                    <option value="1-10-Oct-2026">1 – 10 Oct. 2026</option>
+                                    <option value="3rd-12th-Dec-2026">3rd – 12th Dec. 2026 (Advent Retreat)</option>
+                                    <option value="Off-Cycle">Off-Cycle Date</option>
+                                </select>
+                                <div id="otherDateField" class="conditional-field">
+                                    <label>Please specify your preferred date:</label>
+                                    <input type="text" class="form-control" name="otherDateDetails" placeholder="Enter your preferred dates">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">How Many</label>
+                                <select class="form-control" name="howMany" id="howMany" required onchange="toggleBookingType(this.value)">
+                                    <option value="">Please Select</option>
+                                    <option value="One Person">One Person</option>
+                                    <option value="Group">Group</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Venue for Retreat</label>
+                                <select class="form-control" name="venue" id="venue" required onchange="checkOtherOption(this, 'otherVenueField')">
+                                    <option value="">Please Select</option>
+                                    <option value="Franciscan Centre">Franciscan Friars Centre</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div id="otherVenueField" class="conditional-field">
+                                    <label>Please specify venue:</label>
+                                    <input type="text" class="form-control" name="otherVenueDetails" placeholder="Enter venue details">
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="step" id="step3">
+                            <div class="form-group">
+                                <label class="required">Which of these categories apply to you</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Religious"> A Religious/Consecrated life</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Priest"> A Priest</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Deacon"> A Deacon</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Seminarian"> A Seminarian/Scholastic</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Simple Vows"> Simple Vows/Young Professed</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Solemn Vows"> Solemn Vows/Finally Professed</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Married"> Laity/Married</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Separated"> Laity/Separated</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Widow"> Laity/Widow(er)</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Unmarried"> Laity/Unmarried</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Single"> Laity/Single</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Single Parent"> Laity/Single Parent</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">How did you find out about us?</label>
+                                <select class="form-control" name="referralSource" id="referralSource" required onchange="checkOtherOption(this, 'otherReferralField')">
+                                    <option value="">Please Select</option>
+                                    <option value="Website">Website</option>
+                                    <option value="Social Media">Social Media</option>
+                                    <option value="Friend">Friend/Family</option>
+                                    <option value="Parish">Parish/Church</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div id="otherReferralField" class="conditional-field">
+                                    <label>Please specify:</label>
+                                    <input type="text" class="form-control" name="otherReferralDetails" placeholder="How did you hear about us?">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Have you ever made a retreat at this Franciscan Centre?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="previousRetreat" value="Yes" required> YES</label>
+                                    <label class="radio-item"><input type="radio" name="previousRetreat" value="No" required> NO</label>
+                                </div>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="step" id="step4">
+                            <div class="form-group">
+                                <label class="required">Do you have any Physical mobility restrictions?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="mobility" value="Yes" required onchange="toggleMobilityDetails(true)"> YES (note that we are not able to provide extra personnel)</label>
+                                    <label class="radio-item"><input type="radio" name="mobility" value="No" required onchange="toggleMobilityDetails(false)"> NO</label>
+                                </div>
+                                <div id="mobilityDetails" class="conditional-field">
+                                    <label>Please describe your mobility needs:</label>
+                                    <textarea class="form-control" name="mobilityDetails" rows="3" placeholder="Please specify your mobility restrictions"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Do you intend to come with your personal car?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="personalCar" value="Yes" required> YES</label>
+                                    <label class="radio-item"><input type="radio" name="personalCar" value="No" required> NO</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Preferred mode of payment</label>
+                                <select class="form-control" name="paymentMode" id="paymentMode" required onchange="toggleBankDetails(this.value)">
+                                    <option value="">Please Select</option>
+                                    <option value="Bank Transfer">Bank Transfer</option>
+                                    <option value="Cash">Cash</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div id="bankDetails" class="bank-details" style="display: none;">
+                                    <h4>Bank Transfer Details</h4>
+                                    <div class="account-info">
+                                        <div class="account-label">Bank Name:</div>
+                                        <div class="account-value">FIRST BANK PLC</div>
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="account-label">Account Name:</div>
+                                        <div class="account-value">MISSION OF THE IMMACULATE</div>
+                                    </div>
+                                    <div class="account-info">
+                                        <div class="account-label">Account Number:</div>
+                                        <div class="account-value" style="background: #fff3e0; padding: 10px; border-radius: 5px; border: 2px dashed var(--gold);">2005759871</div>
+                                    </div>
+                                    <p style="font-size: 0.9rem; color: #666; margin-top: 15px;"><strong>Note:</strong> Please contact us for the updated cost before making payment.</p>
+                                </div>
+                                <div id="otherPaymentField" class="conditional-field">
+                                    <label>Please specify payment method:</label>
+                                    <input type="text" class="form-control" name="otherPaymentDetails" placeholder="Enter your preferred payment method">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Relationship of Contact name to you</label>
+                                <input type="text" class="form-control" name="contactRelationship" placeholder="e.g., Brother, Sister, Friend">
+                            </div>
+                            <div class="form-group">
+                                <label class="required">Dietary Concerns</label>
+                                <textarea class="form-control" name="dietary" rows="3" placeholder="Put NONE if no dietary concerns" required></textarea>
+                            </div>
+
+                            <!-- Group Recommendation Section - Only shows for Group bookings -->
+                            <div id="groupRecommendationSection" class="conditional-field" style="display: none; margin-top: 30px; padding: 30px; background: #fff3e0; border-radius: 10px; border-left: 5px solid var(--gold);">
+                                <h4 style="color: var(--dark-brown); margin-bottom: 15px; font-family: 'Cinzel', serif;"><i class="fas fa-file-upload" style="margin-right: 10px;"></i>Parish Priest Recommendation</h4>
+                                <p style="font-size: 0.9rem; margin-bottom: 15px; color: #666;">As a group booking, please upload a recommendation letter from your Parish Priest or Spiritual Director.</p>
+
+                                <div class="form-group">
+                                    <label class="required">Parish Priest Name</label>
+                                    <input type="text" class="form-control" name="parishPriestName" id="parishPriestName" placeholder="Name of Parish Priest">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required">Parish Name</label>
+                                    <input type="text" class="form-control" name="parishName" id="parishName" placeholder="Name of Parish">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="required">Upload Recommendation Letter</label>
+                                    <input type="file" class="form-control" name="priestRecommendation" id="priestRecommendation" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="padding: 10px;">
+                                    <p class="help-text">Accepted formats: PDF, Word, JPG, PNG (Max 5MB)</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Retreat Program / Letter of Intent</label>
+                                    <input type="file" class="form-control" name="retreatProgram" id="retreatProgram" accept=".pdf,.doc,.docx" style="padding: 10px;">
+                                    <p class="help-text">Upload your group's retreat program or letter of intent (Optional but recommended)</p>
+                                </div>
+                            </div>
+
+                            <div class="recommendation-section">
+                                <h4>Additional Information</h4>
+                                <p style="font-size: 0.9rem; margin-bottom: 10px;">Any other information you'd like us to know:</p>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Recommended by (Name):</label>
+                                    <input type="text" class="form-control" name="recommendedBy" placeholder="Name of person who recommended you">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0; margin-top: 15px;">
+                                    <label>Special Requests:</label>
+                                    <textarea class="form-control" name="specialRequests" rows="3" placeholder="Any special requests"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-top: 30px;">
+                                <label class="checkbox-item required">
+                                    <input type="checkbox" name="terms" id="termsCheckbox" required>
+                                    I agree to the <a href="#" style="color: var(--dark-green);">terms & conditions</a>.
+                                </label>
+                            </div>
+                            <div class="form-buttons">
+                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
+                                <button type="submit" class="btn-submit" id="submitBtn" disabled style="opacity: 0.5; cursor: not-allowed;">Submit Booking</button>
+                            </div>
+                        </div>
+
+                        <div class="success-message" id="successMessage">
+                            <h3>Thank You!</h3>
+                            <p>Your re  treat booking has been submitted successfully. We will contact you shortly for confirmation.</p>
+                            <p style="margin-top: 20px;"><strong>Peace and all good!</strong></p>
+                        </div>
+                    </form>
+
+                    <div class="rules-section">
+                        <h3>Rules and Regulations</h3>
+                        <div class="rules-tabs">
+                            <button type="button" class="rules-tab active" onclick="showRules('individual')" id="individualTab">Individual Booking</button>
+                            <button type="button" class="rules-tab" onclick="showRules('group')" id="groupTab">Group Booking</button>
+                        </div>
+                        <div id="individualRules" class="rules-content active">
+                            <ul class="rules-list">
+                                <li>Arrival time is between 2:00 PM and 6:00 PM on the first day of retreat</li>
+                                <li>Departure time is before 12:00 PM on the last day of retreat</li>
+                                <li>Maintain silence in designated areas and during retreat hours</li>
+                                <li>Attend all scheduled conferences and spiritual exercises</li>
+                                <li>Respect the privacy and space of other retreatants</li>
+                                <li>No smoking or consumption of alcohol on the premises</li>
+                                <li>Modest dress code is required at all times</li>
+                                <li>Personal electronic devices should be used only in designated areas</li>
+                                <li>Notify the director immediately in case of emergency</li>
+                                <li>Full payment must be made before or upon arrival</li>
+                            </ul>
+                        </div>
+                        <div id="groupRules" class="rules-content">
+                            <ul class="rules-list">
+                                <li>Group coordinator must confirm final number of participants 7 days before retreat</li>
+                                <li>Arrival time is between 2:00 PM and 6:00 PM on the first day</li>
+                                <li>Departure time is before 12:00 PM on the last day</li>
+                                <li>Group members must respect the silence and prayer time of other retreatants</li>
+                                <li>Group coordinator is responsible for ensuring all members follow house rules</li>
+                                <li>Common areas must be kept clean and tidy</li>
+                                <li>No smoking or consumption of alcohol on the premises</li>
+                                <li>Modest dress code is required for all group members</li>
+                                <li>Group activities must not disturb other retreatants</li>
+                                <li>Full payment for the entire group must be made 3 days before arrival</li>
+                                <li>Minimum group size is 5 persons</li>
+                                <li><strong>Parish Priest recommendation required for all group bookings</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get In Touch Section -->
+    <section class="section section-dark" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="divider"></div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Superior</h3>
+                    <p>Fr. AlexAnthony<br>Franciscan Friars of the Immaculate<br>City of the Immaculate Retreat Center</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>ffiavemaria@gmail.com</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>City of the Immaculate<br>Franciscan Retreat Center<br>[P.O Box 364, Old Aiyepe Road Sagamu Ogun State]</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto;">
+                    We welcome your inquiries about our retreat programs, vocations, or any other questions about our Franciscan life. May God bless you and keep you.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donate Section -->
+    <section class="section section-brown" id="donate">
+        <div class="container">
+            <h2 class="section-title">Support Us</h2>
+            <div class="divider"></div>
+
+            <div class="donate-content">
+                <p>Your generous donation helps us continue the mission of St. Francis and St. Maximilian Kolbe. Your support enables us to:</p>
+
+                <div class="donation-options">
+                    <div class="donation-card">
+                        <i class="fas fa-home"></i>
+                        <h3>Maintain Our Facilities</h3>
+                        <p>Help us keep our retreat center and friaries running, providing a place of prayer and peace for all who come.</p>
+                    </div>
+
+                    <div class="donation-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Support Our Students</h3>
+                        <p>Assist our seminarians and brothers in their formation and studies for the priesthood and religious life.</p>
+                    </div>
+
+                    <div class="donation-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Missionary Work</h3>
+                        <p>Support our missionary activities both locally and abroad, bringing the Gospel to those who have not heard it.</p>
+                    </div>
+
+                    <div class="donation-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3>Charitable Works</h3>
+                        <p>Help us serve the poor, the sick, and the marginalized, following the example of St. Francis.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 60px; background: rgba(255,255,255,0.1); padding: 40px; border-radius: 10px;">
+                    <h3 style="font-family: 'Cinzel', serif; margin-bottom: 20px; color: var(--gold);">Bank Transfer Details</h3>
+                    <div style="max-width: 500px; margin: 0 auto; text-align: left;">
+                        <div class="account-info" style="background: rgba(255,255,255,0.1); color: white; margin: 15px 0; padding: 15px; border-radius: 5px;">
+                            <div class="account-label" style="color: var(--gold);">Bank Name:</div>
+                            <div class="account-value" style="color: white; font-size: 1.2rem;">FIRST BANK PLC</div>
+                        </div>
+                        <div class="account-info" style="background: rgba(255,255,255,0.1); color: white; margin: 15px 0; padding: 15px; border-radius: 5px;">
+                            <div class="account-label" style="color: var(--gold);">Account Name:</div>
+                            <div class="account-value" style="color: white; font-size: 1.2rem;">MISSION OF THE IMMACULATE</div>
+                        </div>
+                        <div class="account-info" style="background: rgba(255,255,255,0.1); color: white; margin: 15px 0; padding: 15px; border-radius: 5px;">
+                            <div class="account-label" style="color: var(--gold);">Account Number:</div>
+                            <div class="account-value" style="color: white; font-size: 1.2rem;">2005759871</div>
+                        </div>
+                    </div>
+                    <p style="margin-top: 30px; font-style: italic;">
+                        "Remember that when you leave this earth, you can take with you nothing that you have received—only what you have given."<br>
+                        <strong>— St. Francis of Assisi</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">
+            <img src="retreat.jpg" alt="FFI Logo">
+        </div>
+        <div class="footer-content">
+            <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px;">Franciscan Friars of the Immaculate</h3>
+            <p>City of the Immaculate Retreat Center</p>
+            <p style="margin-top: 10px;">ffiavemaria@gmail.com</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p style="margin-top: 30px; font-size: 0.9rem;">&copy; 2025 Franciscan Friars of the Immaculate. All rights reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Pax et Bonum (Peace and All Good)</p>
+        </div>
+    </footer>
+
+    <!-- Floating Booking Button -->
+    <div class="floating-booking" id="floatingBooking">
+        <a href="#booking" class="btn-primary">Make a Booking</a>
+    </div>
+
+    
+    <script>
+        // Slider functionality
+        let slideIndex = 1;
+        let slideInterval;
+
+        function showSlide(n) {
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+
+        function changeSlide(n) {
+            clearInterval(slideInterval);
+            showSlide(slideIndex += n);
+            autoSlide();
+        }
+
+        function currentSlide(n) {
+            clearInterval(slideInterval);
+            showSlide(slideIndex = n);
+            autoSlide();
+        }
+
+        function autoSlide() {
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                showSlide(slideIndex);
+            }, 6000);
+        }
+
+        autoSlide();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Form multi-step functionality
+        let currentStep = 1;
+        const totalSteps = 4;
+        let isGroupBooking = false;
+
+        function nextStep() {
+            if (validateStep(currentStep)) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep++;
+                if (currentStep <= totalSteps) {
+                    document.getElementById(`step${currentStep}`).classList.add('active');
+                    // Check if we need to show group fields
+                    if (currentStep === 4) {
+                        updateSubmitButtonState();
+                    }
+                }
+            }
+        }
+
+        function prevStep() {
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            currentStep--;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+        }
+
+        function validateStep(step) {
+            const currentStepEl = document.getElementById(`step${step}`);
+            const requiredFields = currentStepEl.querySelectorAll('[required]:not([disabled])');
+            let valid = true;
+
+            requiredFields.forEach(field => {
+                // Skip hidden fields
+                if (field.offsetParent === null) {
+                    field.classList.remove('error');
+                    return;
+                }
+
+                if (field.type === 'checkbox' && !field.checked) {
+                    field.classList.add('error');
+                    valid = false;
+                } else if (field.type === 'radio') {
+                    const name = field.name;
+                    const radioGroup = currentStepEl.querySelectorAll(`input[name="${name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) {
+                        radioGroup.forEach(radio => radio.classList.add('error'));
+                        valid = false;
+                    } else {
+                        radioGroup.forEach(radio => radio.classList.remove('error'));
+                    }
+                } else if (!field.value.trim()) {
+                    field.classList.add('error');
+                    valid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            return valid;
+        }
+
+        function checkOtherOption(selectElement, fieldId) {
+            const field = document.getElementById(fieldId);
+            if (selectElement.value === 'Other' || selectElement.value === 'Off-Cycle') {
+                field.classList.add('show');
+                const input = field.querySelector('input, textarea');
+                if (input) input.setAttribute('required', 'required');
+            } else {
+                field.classList.remove('show');
+                const input = field.querySelector('input, textarea');
+                if (input) input.removeAttribute('required');
+            }
+        }
+
+        // Toggle booking type - handles group vs individual logic
+        function toggleBookingType(value) {
+            const groupSection = document.getElementById('groupRecommendationSection');
+            const parishPriestName = document.getElementById('parishPriestName');
+            const parishName = document.getElementById('parishName');
+            const priestRecommendation = document.getElementById('priestRecommendation');
+            const individualTab = document.getElementById('individualTab');
+            const groupTab = document.getElementById('groupTab');
+
+            if (value === 'Group') {
+                isGroupBooking = true;
+                // Show group recommendation section
+                groupSection.style.display = 'block';
+                groupSection.classList.add('show');
+
+                // Make fields required for group
+                parishPriestName.setAttribute('required', 'required');
+                parishName.setAttribute('required', 'required');
+                priestRecommendation.setAttribute('required', 'required');
+
+                // Show group rules
+                showRules('group');
+
+                // Update active tab
+                individualTab.classList.remove('active');
+                groupTab.classList.add('active');
+            } else {
+                isGroupBooking = false;
+                // Hide group recommendation section
+                groupSection.style.display = 'none';
+                groupSection.classList.remove('show');
+
+                // Remove required attribute for individual
+                parishPriestName.removeAttribute('required');
+                parishName.removeAttribute('required');
+                priestRecommendation.removeAttribute('required');
+
+                // Show individual rules
+                showRules('individual');
+
+                // Update active tab
+                groupTab.classList.remove('active');
+                individualTab.classList.add('active');
+            }
+
+            // Update submit button state
+            updateSubmitButtonState();
+        }
+
+        function toggleMobilityDetails(show) {
+            const field = document.getElementById('mobilityDetails');
+            if (show) {
+                field.classList.add('show');
+                field.querySelector('textarea').setAttribute('required', 'required');
+            } else {
+                field.classList.remove('show');
+                field.querySelector('textarea').removeAttribute('required');
+            }
+        }
+
+        function toggleBankDetails(value) {
+            const bankDetails = document.getElementById('bankDetails');
+            const otherField = document.getElementById('otherPaymentField');
+
+            if (value === 'Bank Transfer') {
+                bankDetails.style.display = 'block';
+                otherField.classList.remove('show');
+            } else if (value === 'Other') {
+                bankDetails.style.display = 'none';
+                otherField.classList.add('show');
+                otherField.querySelector('input').setAttribute('required', 'required');
+            } else {
+                bankDetails.style.display = 'none';
+                otherField.classList.remove('show');
+                otherField.querySelector('input').removeAttribute('required');
+            }
+        }
+
+        function showRules(type) {
+            // Update tabs
+            document.querySelectorAll('.rules-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            if (event && event.target) {
+                event.target.classList.add('active');
+            } else {
+                document.getElementById(type + 'Tab').classList.add('active');
+            }
+
+            // Update content
+            document.querySelectorAll('.rules-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(type + 'Rules').classList.add('active');
+        }
+
+        // Update submit button state based on form completion
+        function updateSubmitButtonState() {
+            const submitBtn = document.getElementById('submitBtn');
+            const termsCheckbox = document.getElementById('termsCheckbox');
+
+            // Check if all required fields in step 4 are filled
+            const step4 = document.getElementById('step4');
+            const requiredFields = step4.querySelectorAll('[required]:not([disabled])');
+            let allFilled = true;
+
+            requiredFields.forEach(field => {
+                // Skip hidden fields
+                if (field.offsetParent === null) return;
+
+                if (field.type === 'checkbox' && !field.checked) {
+                    allFilled = false;
+                } else if (field.type === 'radio') {
+                    const name = field.name;
+                    const radioGroup = step4.querySelectorAll(`input[name="${name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) allFilled = false;
+                } else if (!field.value.trim()) {
+                    allFilled = false;
+                }
+            });
+
+            // Also check terms checkbox
+            if (!termsCheckbox.checked) {
+                allFilled = false;
+            }
+
+            // Enable/disable submit button
+            if (allFilled) {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                submitBtn.style.cursor = 'pointer';
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+                submitBtn.style.cursor = 'not-allowed';
+            }
+        }
+
+        // Add event listeners to all inputs in step 4 to check submit button state
+        document.addEventListener('DOMContentLoaded', function() {
+            const step4 = document.getElementById('step4');
+            if (step4) {
+                const inputs = step4.querySelectorAll('input, textarea, select');
+                inputs.forEach(input => {
+                    input.addEventListener('change', updateSubmitButtonState);
+                    input.addEventListener('input', updateSubmitButtonState);
+                    input.addEventListener('blur', updateSubmitButtonState);
+                });
+            }
+
+            // Terms checkbox listener
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            if (termsCheckbox) {
+                termsCheckbox.addEventListener('change', updateSubmitButtonState);
+            }
+        });
+
+        // Form submission
+        document.getElementById('retreatForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Final validation before submit
+            if (!validateStep(4)) {
+                alert('Please fill in all required fields before submitting.');
+                return;
+            }
+
+            // Check terms checkbox
+            const termsCheckbox = document.getElementById('termsCheckbox');
+            if (!termsCheckbox.checked) {
+                alert('Please agree to the terms and conditions.');
+                return;
+            }
+
+            // Check file size if group booking
+            if (isGroupBooking) {
+                const fileInput = document.getElementById('priestRecommendation');
+                if (fileInput.files.length > 0) {
+                    const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
+                    if (fileSize > 5) {
+                        alert('Recommendation file is too large. Maximum size is 5MB.');
+                        return;
+                    }
+                }
+            }
+
+            const formData = new FormData(this);
+
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    for (let i = 1; i <= totalSteps; i++) {
+                        document.getElementById(`step${i}`).style.display = 'none';
+                    }
+                    document.querySelector('.rules-section').style.display = 'none';
+                    document.getElementById('successMessage').classList.add('show');
+                    this.reset();
+                    currentStep = 1;
+                    document.getElementById('step1').classList.add('active');
+                } else {
+                    alert('There was an error submitting your form. Please try again.');
+                }
+            })
+                console.error('Error:', error);
+                alert('There was an error submitting your form. Please try again.');
+            });
+        ;
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-title, .divider, .heritage-text, .text-content, .image-content, .program-card, .gallery-item, .contact-card, .donation-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Floating booking button visibility
+        const floatingBooking = document.getElementById('floatingBooking');
+        const bookingSection = document.getElementById('booking');
+        const contactSection = document.getElementById('contact');
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            const bookingPos = bookingSection.offsetTop;
+            const contactPos = contactSection.offsetTop;
+
+            if (scrollPos > bookingPos && scrollPos < contactPos) {
+                floatingBooking.classList.remove('visible');
+            } else if (scrollPos >= contactPos || scrollPos < bookingPos) {
+                floatingBooking.classList.add('visible');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
