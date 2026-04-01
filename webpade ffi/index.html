@@ -327,8 +327,8 @@
             <div class="content-grid">
                 <div class="text-content">
                     <h3>Sons of St. Francis</h3>
-                    <p>We are Franciscan Friars of the Immaculate, a religious institute founded in 1970 by Fr. Stefano Maria Manelli and Fr. Gabriel Maria Pellettieri. We strive to be perfectly conformed to the poor, humble, crucified Jesus through a life of charity, supernatural obedience, and poverty.</p>
-                    <p>We are totally consecrated to the Immaculate Virgin Mary after the example of St. Maximilian Mary Kolbe, giving the fullest expression to the Marian dimension of St. Francis' ideal and Rule.</p>
+                    <p>We are Franciscan Friars of the Immaculate, a Roman Catholic religious institute dedicated to living the gospel in the spirit of St.Francis of Assisi . We strive for perfect conformity to the poor,humble, and crucified Christ through a life of charity, supernatural obedience, and evangelical poverty.</p>
+                    <p>Totally consecrated to the Immaculate Virgin Mary, we follow the example of St Maximilian Mary Kolbe, seeking to give full expression to the Marian dimension of the Franciscan ideal and Rule.</p>
                     <div class="quote-block">
                         "We have been called to heal wounds, to unite what has fallen apart, and to bring home those who have lost their way."
                         <cite>— St. Francis of Assisi</cite>
@@ -345,8 +345,9 @@
             <div class="content-grid reverse" style="margin-top: 60px;">
                 <div class="text-content">
                     <h3>Our Mission</h3>
-                    <p>Following the footsteps of our Seraphic Father St. Francis, we embrace a life of Gospel poverty and minority. We seek to live the life and poverty of Our Most High Lord Jesus Christ and His Holy Mother, and to persevere in this to the end.</p>
+                    <p>Following the footsteps of our Seraphic Father, St. Francisof Assisi, we embrace a life of Gospel poverty and minority. we seek to live the life and poverty of Our most high Jesus Christ and His Holy Mother, persevering in this way of life to the end.</p>
                     <p>Our mission is the care of souls and the cultivation of a lively faith, bringing the Good News to all people through our witness of life and apostolic works.</p>
+        <p>We are located at Sagamu, Ogun State, Nigeria, where we carry out our mission through various apostolates. Among these are our Chaplaincy for pastoral activities, our Formation House for the training of young religious, a Marian sanctuary for prayer and devotion, a Charity Home for works of mercy, a Sacramental Store, and a REtreat Ground for spiritual renewal.</p>
                 </div>
                 <div class="image-content">
                     <div class="image-wrapper">
@@ -563,7 +564,7 @@
             <div class="content-grid">
                 <div class="text-content">
                     <h3>Preaching the Gospel</h3>
-                    <p>Following the command of our Lord to "go and make disciples of all nations," we engage in various apostolic works aimed at the salvation of souls. Our primary apostolate is the Retreat Center, where we offer spiritual direction and lead souls to deeper union with Christ.</p>
+                    <p>Following the command of our Lord to "go and make disciples of all nations," we engage in various apostolic works aimed at the salvation of souls. Our primary apostolate is the preaching of the Gospel through every legitimate means possible, especially through the media. Through this, we offer spiritual direction and lead souls to a deeper union with Christ.</p>
                     <p>We also engage in parish missions, preaching, teaching the faith, and publishing. Inspired by St. Maximilian Kolbe, we use modern means of communication to spread the Gospel and promote devotion to the Immaculate Virgin.</p>
                 </div>
                 <div class="image-content">
@@ -927,7 +928,7 @@
                     </div>
 
                     <!-- BOOKING FORM -->
-                    <form action="https://formsubmit.co/judeojomah063@gmail.com" method="POST" enctype="multipart/form-data" id="bookingForm" style="display:none;" target="hiddenFrame">
+                    <form action="https://formsubmit.co/ffiavemaria@gmail.com" method="POST" enctype="multipart/form-data" id="bookingForm" style="display:none;" target="hiddenFrame">
 
                         <!-- FormSubmit settings -->
                         <input type="hidden" name="_subject" value="New Retreat Booking Submission">
@@ -1529,6 +1530,21 @@
 
         // NEW BOOKING FORM FUNCTIONALITY
         document.addEventListener('DOMContentLoaded', function () {
+
+        // BLOCKED DATES - Add dates you want to block in YYYY-MM-DD format
+    const blockedDates = [
+        "2026-04-15",  // Example: Good Friday
+        "2026-04-16",  // Example: Easter Saturday
+        "2026-04-17",  // Example: Easter Sunday
+        "2026-12-25",
+        ''  // Example: Christmas
+        // Add more dates as needed - format: "YYYY-MM-DD"
+    ];
+
+    // Check if date is blocked
+    function isDateBlocked(dateString) {
+        return blockedDates.includes(dateString);
+    }
 
             // Form elements
             const agreeRules = document.getElementById("agreeRules");
