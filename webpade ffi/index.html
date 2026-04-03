@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -192,7 +191,6 @@
         .floating-booking { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: none; }
         .floating-booking.visible { display: block; animation: slideIn 0.5s ease; }
         @keyframes slideIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
-        .floating-booking .btn-primary { box-shadow: 0 5px 20px rgba(0,0,0,0.3); padding: 15px 30px; }
 
         @media (max-width: 768px) {
             .nav-menu { position: fixed; top: 0; right: -100%; width: 80%; height: 100vh; background: rgba(255,255,255,0.98); flex-direction: column; padding: 100px 40px; transition: right 0.3s ease; }
@@ -966,6 +964,12 @@
                             <div class="form-group">
                                 <label class="required">Retreat Date</label>
                                 <input type="date" class="form-control" id="datePicker" name="retreat_date" required>
+                                <div id="dateError" style="display: none; color: #e74c3c; margin-top: 8px; padding: 10px; background: #ffeaea; border-radius: 5px; border-left: 3px solid #e74c3c;">
+                                    <i class="fas fa-exclamation-circle"></i> <strong>This date is not available for booking.</strong> Please select another date.
+                                </div>
+                                <div id="dateBlockedInfo" style="display: none; margin-top: 8px; padding: 10px; background: #fff3e0; border-radius: 5px; border-left: 3px solid #ff9800; color: #e65100;">
+                                    <i class="fas fa-info-circle"></i> This date has been blocked by the administrator.
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -1318,6 +1322,13 @@
             margin-top: 3px;
         }
 
+        /* Date input disabled state */
+        input[type="date"]:disabled {
+            background: #f5f5f5;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .rules-card {
@@ -1528,23 +1539,36 @@
             });
         });
 
-        // NEW BOOKING FORM FUNCTIONALITY
+        // NEW BOOKING FORM FUNCTIONALITY WITH DATE BLOCKING
         document.addEventListener('DOMContentLoaded', function () {
 
-        // BLOCKED DATES - Add dates you want to block in YYYY-MM-DD format
-    const blockedDates = [
-        "2026-04-15",  // Example: Good Friday
-        "2026-04-16",  // Example: Easter Saturday
-        "2026-04-17",  // Example: Easter Sunday
-        "2026-12-25",
-        ''  // Example: Christmas
-        // Add more dates as needed - format: "YYYY-MM-DD"
-    ];
+            // ============================================
+            // BLOCKED DATES CONFIGURATION
+            // Add dates you want to block in YYYY-MM-DD format
+            // ============================================
+            const blockedDates = [
+                "2026-07-3",
+                "2026-07-05",  // Example: Good Friday
+                "2026-04-24",  // Example: Easter Saturday
+                "2026-04-26",  // Example: Easter Sunday
+                "2026-11-27",  // Example: Christmas
+                "2026-11-29",  // Example: New Year's Day
+                // Add more dates as needed - format: "YYYY-MM-DD"
+            ];
 
-    // Check if date is blocked
-    function isDateBlocked(dateString) {
-        return blockedDates.includes(dateString);
-    }
+            // Check if date is blocked
+            function isDateBlocked(dateString) {
+                if (!dateString) return false;
+                return blockedDates.includes(dateString);
+            }
+
+            // Format date for display
+            function formatDate(dateString) {
+                if (!dateString) return "";
+                const date = new Date(dateString);
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
 
             // Form elements
             const agreeRules = document.getElementById("agreeRules");
@@ -1568,6 +1592,14 @@
             const phoneNumber = document.querySelector('input[name="phone_number"]');
             const datePicker = document.getElementById("datePicker");
             const termsCheckbox = document.getElementById("termsCheckbox");
+
+            // Error message elements
+            const dateError = document.getElementById("dateError");
+            const dateBlockedInfo = document.getElementById("dateBlockedInfo");
+
+            // Set minimum date to today to prevent past bookings
+            const today = new Date().toISOString().split('T')[0];
+            datePicker.setAttribute('min', today);
 
             // Retreat Type & Group Name
             const retreatRadios = document.querySelectorAll(".retreatType");
@@ -1628,8 +1660,41 @@
             parishName.addEventListener("input", validateForm);
             diocese.addEventListener("input", validateForm);
             phoneNumber.addEventListener("input", validateForm);
-            datePicker.addEventListener("change", validateForm);
             termsCheckbox.addEventListener("change", validateForm);
+
+            // Date picker with blocked date validation
+            datePicker.addEventListener("change", () => {
+                const selectedDate = datePicker.value;
+                
+                // Reset styles first
+                datePicker.style.borderColor = "#ddd";
+                datePicker.classList.remove("error");
+                
+                if (dateError) dateError.style.display = "none";
+                if (dateBlockedInfo) dateBlockedInfo.style.display = "none";
+                
+                if (selectedDate) {
+                    if (isDateBlocked(selectedDate)) {
+                        // Date is blocked - show error and clear selection
+                        datePicker.value = "";
+                        datePicker.style.borderColor = "#e74c3c";
+                        datePicker.classList.add("error");
+                        if(dateError) dateError.style.display = "block";
+                        if(dateBlockedInfo) dateBlockedInfo.style.display = "block";
+                        
+                        // Optional: Alert user
+                        // alert("The date " + formatDate(selectedDate) + " is not available for booking. Please select another date.");
+                    } else {
+                        // Date is available - show success feedback briefly
+                        datePicker.style.borderColor = "#4caf50";
+                        setTimeout(() => {
+                            datePicker.style.borderColor = "#ddd";
+                        }, 1000);
+                    }
+                }
+                
+                validateForm();
+            });
 
             // Retreat type conditional - Group Name
             retreatRadios.forEach(radio => {
@@ -1699,7 +1764,10 @@
                 const isParishNameFilled = parishName.value.trim() !== "";
                 const isDioceseFilled = diocese.value.trim() !== "";
                 const isPhoneNumberFilled = phoneNumber.value.trim() !== "";
+                
+                // Check date is selected AND not blocked
                 const isDateSelected = datePicker.value !== "";
+                const isDateNotBlocked = !isDateBlocked(datePicker.value);
 
                 // Check file uploads
                 const isRecommendationUploaded = fileUpload.files.length > 0;
@@ -1733,6 +1801,7 @@
                                  isDioceseFilled && 
                                  isPhoneNumberFilled && 
                                  isDateSelected && 
+                                 isDateNotBlocked &&  // Added blocked date check
                                  isRecommendationUploaded && 
                                  isRetreatProgramUploaded &&
                                  isRetreatTypeSelected &&
@@ -1758,6 +1827,14 @@
 
             // Form submission handler
             bookingForm.addEventListener("submit", (e) => {
+                // Final check for blocked dates before submission
+                if (isDateBlocked(datePicker.value)) {
+                    e.preventDefault();
+                    alert("This date is not available for booking. Please select another date.");
+                    datePicker.focus();
+                    return;
+                }
+
                 // Validate one more time before submission
                 if (!validateAllFields()) {
                     e.preventDefault();
@@ -1807,6 +1884,14 @@
                 // Check terms
                 if (!termsCheckbox.checked) {
                     allValid = false;
+                }
+
+                // Check blocked dates - FINAL SAFETY CHECK
+                if (isDateBlocked(datePicker.value)) {
+                    allValid = false;
+                    if(dateError) dateError.style.display = "block";
+                    if(dateBlockedInfo) dateBlockedInfo.style.display = "block";
+                    datePicker.classList.add("error");
                 }
 
                 return allValid;
