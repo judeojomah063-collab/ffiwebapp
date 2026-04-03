@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -235,7 +236,7 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="logo">
-            <img src="logo.jpg" alt="FFI Logo">
+            <img src="logo.png" alt="FFI Logo">
         </div>
         <ul class="nav-menu" id="navMenu">
             <li><a href="#home">Home</a></li>
@@ -326,8 +327,8 @@
             <div class="content-grid">
                 <div class="text-content">
                     <h3>Sons of St. Francis</h3>
-                    <p>We are Franciscan Friars of the Immaculate, a religious institute founded in 1970 by Fr. Stefano Maria Manelli and Fr. Gabriel Maria Pellettieri. We strive to be perfectly conformed to the poor, humble, crucified Jesus through a life of charity, supernatural obedience, and poverty.</p>
-                    <p>We are totally consecrated to the Immaculate Virgin Mary after the example of St. Maximilian Mary Kolbe, giving the fullest expression to the Marian dimension of St. Francis' ideal and Rule.</p>
+                    <p>We are Franciscan Friars of the Immaculate, a Roman Catholic religious institute dedicated to living the gospel in the spirit of St.Francis of Assisi . We strive for perfect conformity to the poor,humble, and crucified Christ through a life of charity, supernatural obedience, and evangelical poverty.</p>
+                    <p>Totally consecrated to the Immaculate Virgin Mary, we follow the example of St Maximilian Mary Kolbe, seeking to give full expression to the Marian dimension of the Franciscan ideal and Rule.</p>
                     <div class="quote-block">
                         "We have been called to heal wounds, to unite what has fallen apart, and to bring home those who have lost their way."
                         <cite>— St. Francis of Assisi</cite>
@@ -335,7 +336,7 @@
                 </div>
                 <div class="image-content">
                     <div class="image-wrapper">
-                        <img src="https://kimi-web-img.moonshot.cn/img/uploads7.wikiart.org/91200101931b70f4dc53da66a69a0f88aa29d204.jpg" alt="St. Francis Preaching to the Birds">
+                        <img src="st francisc.jpg" alt="St. Francis Preaching to the Birds">
                         <div class="image-caption">St. Francis preaching to the birds - Giotto (1297-1299)</div>
                     </div>
                 </div>
@@ -344,8 +345,9 @@
             <div class="content-grid reverse" style="margin-top: 60px;">
                 <div class="text-content">
                     <h3>Our Mission</h3>
-                    <p>Following the footsteps of our Seraphic Father St. Francis, we embrace a life of Gospel poverty and minority. We seek to live the life and poverty of Our Most High Lord Jesus Christ and His Holy Mother, and to persevere in this to the end.</p>
+                    <p>Following the footsteps of our Seraphic Father, St. Francisof Assisi, we embrace a life of Gospel poverty and minority. we seek to live the life and poverty of Our most high Jesus Christ and His Holy Mother, persevering in this way of life to the end.</p>
                     <p>Our mission is the care of souls and the cultivation of a lively faith, bringing the Good News to all people through our witness of life and apostolic works.</p>
+        <p>We are located at Sagamu, Ogun State, Nigeria, where we carry out our mission through various apostolates. Among these are our Chaplaincy for pastoral activities, our Formation House for the training of young religious, a Marian sanctuary for prayer and devotion, a Charity Home for works of mercy, a Sacramental Store, and a REtreat Ground for spiritual renewal.</p>
                 </div>
                 <div class="image-content">
                     <div class="image-wrapper">
@@ -562,7 +564,7 @@
             <div class="content-grid">
                 <div class="text-content">
                     <h3>Preaching the Gospel</h3>
-                    <p>Following the command of our Lord to "go and make disciples of all nations," we engage in various apostolic works aimed at the salvation of souls. Our primary apostolate is the Retreat Center, where we offer spiritual direction and lead souls to deeper union with Christ.</p>
+                    <p>Following the command of our Lord to "go and make disciples of all nations," we engage in various apostolic works aimed at the salvation of souls. Our primary apostolate is the preaching of the Gospel through every legitimate means possible, especially through the media. Through this, we offer spiritual direction and lead souls to a deeper union with Christ.</p>
                     <p>We also engage in parish missions, preaching, teaching the faith, and publishing. Inspired by St. Maximilian Kolbe, we use modern means of communication to spread the Gospel and promote devotion to the Immaculate Virgin.</p>
                 </div>
                 <div class="image-content">
@@ -842,8 +844,9 @@
     </section>
 
     
+    
     <!-- Booking Form Section -->
-    <section class="section section-green" style="padding: 60px 20px;">
+    <section class="section section-green" style="padding: 60px 20px;" id="booking">
         <div class="container">
             <div class="form-wrapper">
                 <div class="form-header">
@@ -860,303 +863,481 @@
 
                 <div class="form-container">
 
-<form id="retreatForm" action="https://formsubmit.co/judeojomah063@gmail.com" method="POST" enctype="multipart/form-data">
+                    <!-- SUCCESS MESSAGE -->
+                    <div class="success-message" id="successMessage">
+                        <div class="success-icon">✓</div>
+                        <h3>Booking Submitted Successfully!</h3>
+                        <p>Thank you for your retreat booking request.</p>
+                        <p>We have received your submission and will contact you shortly.</p>
+                        <p><strong>God bless you!</strong></p>
+                        <button class="btn-back" onclick="location.reload()">Make Another Booking</button>
+                    </div>
 
-<input type="hidden" name="_subject" value="New Retreat Booking - Franciscan Friars">
+                    <!-- RULES CARD -->
+                    <div class="rules-card" id="rulesCard">
+                        <h3 style="font-family: 'Cinzel', serif; color: var(--dark-green); font-size: 1.5rem; margin-bottom: 20px; text-align: center;">
+                            <i class="fas fa-scroll"></i> Rules, Regulations & Booking Requirements
+                        </h3>
 
-<input type="hidden" name="_captcha" value="false">
+                        <div class="rules-content-scroll">
+                            <h4>Rules and Regulations</h4>
+                            <ul class="rules-list">
+                                <li>Pilgrims are forbidden to enter the Friars' Cloister AND Kitchen area without any formal invitation.</li>
+                                <li>Pilgrims must participate at the Morning Mass (7:00am) and at the Holy Hour (4:00pm).</li>
+                                <li>Pilgrims are enjoined to engage themselves in the cleaning of the Church on Saturdays.</li>
+                                <li>Pilgrims are to maintain an atmosphere of SILENCE throughout the period of their stay.</li>
+                                <li>Rooms, dormitories, kitchen, toilets, and the compound must be kept clean after use.</li>
+                                <li>Pilgrims are not allowed to cook in the rooms and in the dormitories.</li>
+                                <li>Indecency in the mode of dressing is disallowed (Body-hugging dresses that reveal body parts are disallowed — Both Male & Female. Skirts above the knee are not allowed. Males are not allowed to wear boxers walking around the compound.)</li>
+                                <li>There is no sharing of the same room or dormitories between both sexes.</li>
+                                <li>Care must be taken in the handling of properties belonging to the host community. Every damage comes with a penalty. (The vandalization of plants and animals in the community will be penalized.)</li>
+                                <li>The Sick or anyone under hard medical or any form of drugs are advised to stay back.</li>
+                                <li><strong>NB:</strong> The Friars are not to be held responsible for any discomfort or poor service when there is a breach in the above-mentioned Instructions, Guidelines, Rules and Regulations.</li>
+                            </ul>
 
-<input type="hidden" name="_template" value="table">
+                            <h4 style="margin-top: 30px;">Booking Requirements</h4>
+                            <ul class="rules-list">
+                                <li>Every booking is to be made at least 5 days prior to the arrival of the pilgrims.</li>
+                                <li>Introduction/Recommendation from the parish priest/director/Chaplain of the Association must be submitted prior to or on arrival of any Group. (This is very necessary.)</li>
+                            </ul>
 
-<input type="hidden" name="_next" value="https://immaculate-retreatbooking.com/thankyou.html">
+                            <h4 style="margin-top: 30px;">Appreciation</h4>
+                            <p>Since our community is a poor Community, we beg Pilgrims to generously appreciate our works and mission. Food items such as Rice, Beans, Oil, and any other food items, along with tokens, will be highly appreciated.</p>
 
-</div>
-                        <!-- Step 1 -->
-                        <div class="step active" id="step1">
-                            <div class="form-group">
-                                <label class="required">Name</label>
-                                <div class="form-row">
-                                    <div><input type="text" class="form-control" name="prefix" placeholder="Prefix" required></div>
-                                    <div><input type="text" class="form-control" name="firstName" placeholder="First Name" required></div>
-                                </div>
-                                <input type="text" class="form-control" name="lastName" placeholder="Last Name" style="margin-top: 15px;" required>
+                            <h4 style="margin-top: 30px;">Pricing</h4>
+                            <ul class="rules-list">
+                                <li>Single Room: ₦3,000 per night</li>
+                                <li>Meal per individual: ₦800 per meal (optional — groups can self-cater)</li>
+                                <li>Diesel (groups of 50+): 50 Litres per night</li>
+                            </ul>
+
+                            <h4 style="margin-top: 30px;">Personal Items to Bring</h4>
+                            <ul class="rules-list">
+                                <li>Wrapper for Cold</li>
+                                <li>Personal Toiletries</li>
+                                <li>Personal Bed Spread (if coming in a group)</li>
+                            </ul>
+                        </div>
+
+                        <div class="checkbox-agree" style="margin-top: 30px; padding: 20px; background: #e8f5e9; border-radius: 8px; border: 2px solid var(--green);">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 600; color: var(--dark-green);">
+                                <input type="checkbox" id="agreeRules" style="width: 20px; height: 20px; accent-color: var(--green);">
+                                <span>I have read, understood, and agree to abide by all the rules, regulations, and requirements stated above.</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- BOOKING FORM -->
+                    <form action="https://formsubmit.co/ffiavemaria@gmail.com" method="POST" enctype="multipart/form-data" id="bookingForm" style="display:none;" target="hiddenFrame">
+
+                        <!-- FormSubmit settings -->
+                        <input type="hidden" name="_subject" value="New Retreat Booking Submission">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="">
+
+                        <!-- SECTION 1: Applicant Info -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">1</div>
+                                <h4>Applicant Information</h4>
                             </div>
+
                             <div class="form-group">
-                                <label class="required">Email Address</label>
-                                <input type="email" class="form-control" name="email" placeholder="email@example.com" required>
-                                <p class="help-text">Indicate 'None' if email is not available</p>
+                                <label class="required">Full Name</label>
+                                <input type="text" class="form-control" placeholder="John Paul" name="full_name" required>
                             </div>
+
                             <div class="form-group">
-                                <label class="required">Date of Birth</label>
-                                <input type="date" class="form-control" name="dob" required>
+                                <label class="required">Parish Name</label>
+                                <input type="text" class="form-control" placeholder="St. Mary Catholic Church" name="parish_name" required>
                             </div>
+
                             <div class="form-group">
-                                <label>Preferred Phone Number</label>
-                                <input type="tel" class="form-control" name="phone" placeholder="+1234567890">
+                                <label class="required">Diocese</label>
+                                <input type="text" class="form-control" placeholder="Iperu Diocese" name="diocese" required>
                             </div>
-                            <div class="form-buttons">
-                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+
+                            <div class="form-group">
+                                <label class="required">Phone Number</label>
+                                <input type="tel" class="form-control" placeholder="+234 801 234 5678" name="phone_number" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Retreat Date</label>
+                                <input type="date" class="form-control" id="datePicker" name="retreat_date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Parish Priest/Chaplain Recommendation</label>
+                                <input type="file" class="form-control" id="fileUpload" name="recommendation_letter" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="padding: 10px;">
+                                <div class="file-preview" id="preview"></div>
+                                <div class="file-warning" id="warning">⚠️ Please upload recommendation letter</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Retreat Program Upload</label>
+                                <input type="file" class="form-control" id="retreatProgramUpload" name="retreat_program" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="padding: 10px;">
+                                <div class="file-preview" id="retreatProgramPreview"></div>
+                                <div class="file-warning" id="retreatProgramWarning">⚠️ Please upload retreat program</div>
                             </div>
                         </div>
 
-                        <!-- Step 2 -->
-                        <div class="step" id="step2">
+                        <!-- SECTION 2: Retreat Category -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">2</div>
+                                <h4>Retreat Category</h4>
+                            </div>
+
                             <div class="form-group">
-                                <label class="required">Select Preferred Retreat Dates</label>
-                                <select class="form-control" name="retreatDates" id="retreatDates" required onchange="checkOtherOption(this, 'otherDateField')">
-                                    <option value="">Please Select</option>
-                                    <option value="4th-13th-Dec-2025">4th – 13th Dec. 2025 (Advent Retreat)</option>
-                                    <option value="14th-23rd-April-2026">14th – 23rd April 2026 (Easter Retreat)</option>
-                                    <option value="28th-April-7th-May-2026">28th April – 7th May 2026</option>
-                                    <option value="1st-10th-June-2026">1st – 10th June 2026</option>
-                                    <option value="13th-22nd-June-2026">13th – 22nd June 2026</option>
-                                    <option value="1st-10th-July-2026">1st – 10th July 2026</option>
-                                    <option value="1st-10th-Aug-2026">1st – 10th Aug 2026</option>
-                                    <option value="17th-26th-Aug-2026">17th – 26th Aug. 2026</option>
-                                    <option value="1st-10th-Sept-2026">1st – 10th Sept. 2026</option>
-                                    <option value="13th-22nd-Sept-2026">13th – 22nd Sept. 2026</option>
-                                    <option value="1-10-Oct-2026">1 – 10 Oct. 2026</option>
-                                    <option value="3rd-12th-Dec-2026">3rd – 12th Dec. 2026 (Advent Retreat)</option>
-                                    <option value="Off-Cycle">Off-Cycle Date</option>
-                                </select>
-                                <div id="otherDateField" class="conditional-field">
-                                    <label>Please specify your preferred date:</label>
-                                    <input type="text" class="form-control" name="otherDateDetails" placeholder="Enter your preferred dates">
+                                <label class="required">Type of Retreat</label>
+                                <div class="radio-group">
+                                    <label class="radio-item">
+                                        <input type="radio" name="retreat_type" value="Personal" class="retreatType" required> Personal Retreat
+                                    </label>
+                                    <label class="radio-item">
+                                        <input type="radio" name="retreat_type" value="Group" class="retreatType" required> Group Retreat
+                                    </label>
                                 </div>
+                                <input type="text" id="groupName" name="group_name" class="form-control conditional-field" placeholder="Group Name" style="display:none; margin-top:15px;">
                             </div>
+
                             <div class="form-group">
-                                <label class="required">How Many</label>
-                                <select class="form-control" name="howMany" id="howMany" required onchange="toggleBookingType(this.value)">
-                                    <option value="">Please Select</option>
-                                    <option value="One Person">One Person</option>
-                                    <option value="Group">Group</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Venue for Retreat</label>
-                                <select class="form-control" name="venue" id="venue" required onchange="checkOtherOption(this, 'otherVenueField')">
-                                    <option value="">Please Select</option>
-                                    <option value="Franciscan Centre">Franciscan Friars Centre</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <div id="otherVenueField" class="conditional-field">
-                                    <label>Please specify venue:</label>
-                                    <input type="text" class="form-control" name="otherVenueDetails" placeholder="Enter venue details">
+                                <label class="required">Number of Participants</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="participants" value="1-5" class="participants" required> 1–5</label>
+                                    <label class="radio-item"><input type="radio" name="participants" value="5-10" class="participants" required> 5–10</label>
+                                    <label class="radio-item"><input type="radio" name="participants" value="10-15" class="participants" required> 10–15</label>
+                                    <label class="radio-item"><input type="radio" name="participants" value="15-20" class="participants" required> 15–20</label>
+                                    <label class="radio-item"><input type="radio" name="participants" value="Other" class="participants" required> Other</label>
                                 </div>
-                            </div>
-                            <div class="form-buttons">
-                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
-                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+                                <input type="text" id="participantsOther" name="participants_other" class="form-control conditional-field" placeholder="Specify number" style="display:none; margin-top:10px;">
                             </div>
                         </div>
 
-                        <!-- Step 3 -->
-                        <div class="step" id="step3">
+                        <!-- SECTION 3: Length of Stay -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">3</div>
+                                <h4>Length of Stay</h4>
+                            </div>
+
                             <div class="form-group">
-                                <label class="required">Which of these categories apply to you</label>
+                                <label class="required">Select Duration</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="length_of_stay" value="One day" class="lengthStay" required> One day</label>
+                                    <label class="radio-item"><input type="radio" name="length_of_stay" value="Weekend (Fri-Sun)" class="lengthStay" required> Weekend (Fri–Sun)</label>
+                                    <label class="radio-item"><input type="radio" name="length_of_stay" value="3 Days" class="lengthStay" required> 3 Days</label>
+                                    <label class="radio-item"><input type="radio" name="length_of_stay" value="1 Week" class="lengthStay" required> 1 Week</label>
+                                    <label class="radio-item"><input type="radio" name="length_of_stay" value="Other" class="lengthStay" required> Other</label>
+                                </div>
+                                <input type="text" id="lengthOther" name="length_other" class="form-control conditional-field" placeholder="Specify length" style="display:none; margin-top:10px;">
+                            </div>
+                        </div>
+
+                        <!-- SECTION 4: Purpose of Retreat -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">4</div>
+                                <h4>Purpose of Retreat</h4>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Select Purpose (Check all that apply)</label>
                                 <div class="checkbox-group">
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Religious"> A Religious/Consecrated life</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Priest"> A Priest</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Deacon"> A Deacon</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Seminarian"> A Seminarian/Scholastic</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Simple Vows"> Simple Vows/Young Professed</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Solemn Vows"> Solemn Vows/Finally Professed</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Married"> Laity/Married</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Separated"> Laity/Separated</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Widow"> Laity/Widow(er)</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Unmarried"> Laity/Unmarried</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Single"> Laity/Single</label>
-                                    <label class="checkbox-item"><input type="checkbox" name="category" value="Laity Single Parent"> Laity/Single Parent</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Personal Prayer"> Personal Prayer</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Silent Prayer"> Silent Prayer</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Spiritual Direction"> Spiritual Direction</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Discernment"> Discernment</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Group Recollection"> Group Recollection</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Seminar/Workshop"> Seminar/Workshop</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Thanksgiving"> Thanksgiving</label>
+                                    <label class="checkbox-item"><input type="checkbox" name="purpose" value="Other" id="purposeOtherCheck"> Other</label>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">How did you find out about us?</label>
-                                <select class="form-control" name="referralSource" id="referralSource" required onchange="checkOtherOption(this, 'otherReferralField')">
-                                    <option value="">Please Select</option>
-                                    <option value="Website">Website</option>
-                                    <option value="Social Media">Social Media</option>
-                                    <option value="Friend">Friend/Family</option>
-                                    <option value="Parish">Parish/Church</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <div id="otherReferralField" class="conditional-field">
-                                    <label>Please specify:</label>
-                                    <input type="text" class="form-control" name="otherReferralDetails" placeholder="How did you hear about us?">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Have you ever made a retreat at this Franciscan Centre?</label>
-                                <div class="radio-group">
-                                    <label class="radio-item"><input type="radio" name="previousRetreat" value="Yes" required> YES</label>
-                                    <label class="radio-item"><input type="radio" name="previousRetreat" value="No" required> NO</label>
-                                </div>
-                            </div>
-                            <div class="form-buttons">
-                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
-                                <button type="button" class="btn-submit" onclick="nextStep()">Next</button>
+                                <input type="text" id="purposeOther" name="purpose_other" class="form-control conditional-field" placeholder="Specify purpose" style="display:none; margin-top:10px;">
                             </div>
                         </div>
 
-                        <!-- Step 4 -->
-                        <div class="step" id="step4">
-                            <div class="form-group">
-                                <label class="required">Do you have any Physical mobility restrictions?</label>
-                                <div class="radio-group">
-                                    <label class="radio-item"><input type="radio" name="mobility" value="Yes" required onchange="toggleMobilityDetails(true)"> YES (note that we are not able to provide extra personnel)</label>
-                                    <label class="radio-item"><input type="radio" name="mobility" value="No" required onchange="toggleMobilityDetails(false)"> NO</label>
-                                </div>
-                                <div id="mobilityDetails" class="conditional-field">
-                                    <label>Please describe your mobility needs:</label>
-                                    <textarea class="form-control" name="mobilityDetails" rows="3" placeholder="Please specify your mobility restrictions"></textarea>
-                                </div>
+                        <!-- SECTION 5: Spiritual Intentions -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">5</div>
+                                <h4>Spiritual Intentions</h4>
                             </div>
                             <div class="form-group">
-                                <label class="required">Do you intend to come with your personal car?</label>
-                                <div class="radio-group">
-                                    <label class="radio-item"><input type="radio" name="personalCar" value="Yes" required> YES</label>
-                                    <label class="radio-item"><input type="radio" name="personalCar" value="No" required> NO</label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Preferred mode of payment</label>
-                                <select class="form-control" name="paymentMode" id="paymentMode" required onchange="toggleBankDetails(this.value)">
-                                    <option value="">Please Select</option>
-                                    <option value="Bank Transfer">Bank Transfer</option>
-                                    <option value="Cash">Cash</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                                <div id="bankDetails" class="bank-details" style="display: none;">
-                                    <h4>Bank Transfer Details</h4>
-                                    <div class="account-info">
-                                        <div class="account-label">Bank Name:</div>
-                                        <div class="account-value">FIRST BANK PLC</div>
-                                    </div>
-                                    <div class="account-info">
-                                        <div class="account-label">Account Name:</div>
-                                        <div class="account-value">MISSION OF THE IMMACULATE</div>
-                                    </div>
-                                    <div class="account-info">
-                                        <div class="account-label">Account Number:</div>
-                                        <div class="account-value" style="background: #fff3e0; padding: 10px; border-radius: 5px; border: 2px dashed var(--gold);">2005759871</div>
-                                    </div>
-                                    <p style="font-size: 0.9rem; color: #666; margin-top: 15px;"><strong>Note:</strong> Please contact us for the updated cost before making payment.</p>
-                                </div>
-                                <div id="otherPaymentField" class="conditional-field">
-                                    <label>Please specify payment method:</label>
-                                    <input type="text" class="form-control" name="otherPaymentDetails" placeholder="Enter your preferred payment method">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Relationship of Contact name to you</label>
-                                <input type="text" class="form-control" name="contactRelationship" placeholder="e.g., Brother, Sister, Friend">
-                            </div>
-                            <div class="form-group">
-                                <label class="required">Dietary Concerns</label>
-                                <textarea class="form-control" name="dietary" rows="3" placeholder="Put NONE if no dietary concerns" required></textarea>
-                            </div>
-
-                            <!-- Group Recommendation Section - Only shows for Group bookings -->
-                            <div id="groupRecommendationSection" class="conditional-field" style="display: none; margin-top: 30px; padding: 30px; background: #fff3e0; border-radius: 10px; border-left: 5px solid var(--gold);">
-                                <h4 style="color: var(--dark-brown); margin-bottom: 15px; font-family: 'Cinzel', serif;"><i class="fas fa-file-upload" style="margin-right: 10px;"></i>Parish Priest Recommendation</h4>
-                                <p style="font-size: 0.9rem; margin-bottom: 15px; color: #666;">As a group booking, please upload a recommendation letter from your Parish Priest or Spiritual Director.</p>
-
-                                <div class="form-group">
-                                    <label class="required">Parish Priest Name</label>
-                                    <input type="text" class="form-control" name="parishPriestName" id="parishPriestName" placeholder="Name of Parish Priest">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="required">Parish Name</label>
-                                    <input type="text" class="form-control" name="parishName" id="parishName" placeholder="Name of Parish">
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="required">Upload Recommendation Letter</label>
-                                    <input type="file" class="form-control" name="priestRecommendation" id="priestRecommendation" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" style="padding: 10px;">
-                                    <p class="help-text">Accepted formats: PDF, Word, JPG, PNG (Max 5MB)</p>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Retreat Program / Letter of Intent</label>
-                                    <input type="file" class="form-control" name="retreatProgram" id="retreatProgram" accept=".pdf,.doc,.docx" style="padding: 10px;">
-                                    <p class="help-text">Upload your group's retreat program or letter of intent (Optional but recommended)</p>
-                                </div>
-                            </div>
-
-                            <div class="recommendation-section">
-                                <h4>Additional Information</h4>
-                                <p style="font-size: 0.9rem; margin-bottom: 10px;">Any other information you'd like us to know:</p>
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label>Recommended by (Name):</label>
-                                    <input type="text" class="form-control" name="recommendedBy" placeholder="Name of person who recommended you">
-                                </div>
-                                <div class="form-group" style="margin-bottom: 0; margin-top: 15px;">
-                                    <label>Special Requests:</label>
-                                    <textarea class="form-control" name="specialRequests" rows="3" placeholder="Any special requests"></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-top: 30px;">
-                                <label class="checkbox-item required">
-                                    <input type="checkbox" name="terms" id="termsCheckbox" required>
-                                    I agree to the <a href="#" style="color: var(--dark-green);">terms & conditions</a>.
-                                </label>
-                            </div>
-                            <div class="form-buttons">
-                                <button type="button" class="btn-back" onclick="prevStep()">Back</button>
-                                <button type="submit" class="btn-submit" id="submitBtn" disabled style="opacity: 0.5; cursor: not-allowed;">Submit Booking</button>
+                                <label>Share your spiritual intentions for this retreat</label>
+                                <textarea name="spiritual_intentions" class="form-control" placeholder="Write your spiritual intentions here..." rows="4"></textarea>
                             </div>
                         </div>
 
-                        <div class="success-message" id="successMessage">
-                            <h3>Thank You!</h3>
-                            <p>Your re  treat booking has been submitted successfully. We will contact you shortly for confirmation.</p>
-                            <p style="margin-top: 20px;"><strong>Peace and all good!</strong></p>
+                        <!-- SECTION 6: Accommodation & Logistics -->
+                        <div class="form-card">
+                            <div class="section-header">
+                                <div class="section-number">6</div>
+                                <h4>Accommodation & Logistics</h4>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Will you need accommodation?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="accommodation" value="Yes" required> Yes</label>
+                                    <label class="radio-item"><input type="radio" name="accommodation" value="No" required> No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="required">Will meals be required?</label>
+                                <div class="radio-group">
+                                    <label class="radio-item"><input type="radio" name="meal" value="Yes" required> Yes</label>
+                                    <label class="radio-item"><input type="radio" name="meal" value="No" required> No</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Any medical or special needs we should be aware of?</label>
+                                <textarea name="medical_needs" class="form-control" rows="3" placeholder="Please describe any medical conditions or special requirements..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- TERMS CHECKBOX -->
+                        <div class="form-group terms-box" style="background: #fff3e0; padding: 20px; border-radius: 8px; border-left: 4px solid var(--gold); margin: 30px 0;">
+                            <label class="checkbox-item required" style="font-weight: 600; color: var(--dark-brown);">
+                                <input type="checkbox" name="terms" id="termsCheckbox" required>
+                                <span>I confirm that all information provided is accurate and I agree to comply with all retreat center rules and regulations. I understand that my booking is subject to confirmation by the Franciscan Friars of the Immaculate.</span>
+                            </label>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="btn-submit" id="submitBtn" disabled style="opacity: 0.5; cursor: not-allowed;">Submit Booking</button>
                         </div>
                     </form>
 
-                    <div class="rules-section">
-                        <h3>Rules and Regulations</h3>
-                        <div class="rules-tabs">
-                            <button type="button" class="rules-tab active" onclick="showRules('individual')" id="individualTab">Individual Booking</button>
-                            <button type="button" class="rules-tab" onclick="showRules('group')" id="groupTab">Group Booking</button>
-                        </div>
-                        <div id="individualRules" class="rules-content active">
-                            <ul class="rules-list">
-                                <li>Arrival time is between 2:00 PM and 6:00 PM on the first day of retreat</li>
-                                <li>Departure time is before 12:00 PM on the last day of retreat</li>
-                                <li>Maintain silence in designated areas and during retreat hours</li>
-                                <li>Attend all scheduled conferences and spiritual exercises</li>
-                                <li>Respect the privacy and space of other retreatants</li>
-                                <li>No smoking or consumption of alcohol on the premises</li>
-                                <li>Modest dress code is required at all times</li>
-                                <li>Personal electronic devices should be used only in designated areas</li>
-                                <li>Notify the director immediately in case of emergency</li>
-                                <li>Full payment must be made before or upon arrival</li>
-                            </ul>
-                        </div>
-                        <div id="groupRules" class="rules-content">
-                            <ul class="rules-list">
-                                <li>Group coordinator must confirm final number of participants 7 days before retreat</li>
-                                <li>Arrival time is between 2:00 PM and 6:00 PM on the first day</li>
-                                <li>Departure time is before 12:00 PM on the last day</li>
-                                <li>Group members must respect the silence and prayer time of other retreatants</li>
-                                <li>Group coordinator is responsible for ensuring all members follow house rules</li>
-                                <li>Common areas must be kept clean and tidy</li>
-                                <li>No smoking or consumption of alcohol on the premises</li>
-                                <li>Modest dress code is required for all group members</li>
-                                <li>Group activities must not disturb other retreatants</li>
-                                <li>Full payment for the entire group must be made 3 days before arrival</li>
-                                <li>Minimum group size is 5 persons</li>
-                                <li><strong>Parish Priest recommendation required for all group bookings</strong></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <!-- Hidden iframe for form submission -->
+                    <iframe name="hiddenFrame" style="display:none;"></iframe>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Get In Touch Section -->
+    <!-- Additional CSS for the new form -->
+    <style>
+        /* Success Message Styles */
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 0 auto 30px;
+            max-width: 600px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: slideIn 0.5s ease;
+            text-align: center;
+        }
+
+        .success-message h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Rules Card Styles */
+        .rules-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .rules-content-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 15px;
+            margin-bottom: 20px;
+        }
+
+        .rules-content-scroll h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--dark-green);
+            margin: 25px 0 15px 0;
+            font-size: 1.2rem;
+        }
+
+        .rules-content-scroll h4:first-child {
+            margin-top: 0;
+        }
+
+        .rules-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+            color: #333;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .rules-list li:before {
+            content: "•";
+            color: var(--green);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Form Card Styles */
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--green);
+        }
+
+        .section-number {
+            width: 40px;
+            height: 40px;
+            background: var(--green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .section-header h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--dark-brown);
+            margin: 0;
+            font-size: 1.3rem;
+        }
+
+        /* File upload styles */
+        .file-preview {
+            margin-top: 10px;
+            padding: 10px;
+            background: #e8f5e9;
+            border-radius: 5px;
+            color: var(--dark-green);
+            font-weight: 600;
+            display: none;
+        }
+
+        .file-warning {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff3e0;
+            border-radius: 5px;
+            color: #e65100;
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* Conditional fields */
+        .conditional-field {
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; }
+            to { opacity: 1; max-height: 200px; }
+        }
+
+        /* Checkbox and Radio group styles */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .checkbox-item input[type="checkbox"],
+        .radio-item input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--green);
+            cursor: pointer;
+        }
+
+        /* Terms box */
+        .terms-box .checkbox-item {
+            align-items: flex-start;
+        }
+
+        .terms-box input[type="checkbox"] {
+            margin-top: 3px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .rules-card {
+                padding: 20px;
+            }
+
+            .form-card {
+                padding: 20px;
+            }
+
+            .rules-content-scroll {
+                max-height: 400px;
+            }
+
+            .checkbox-agree {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+<!-- Get In Touch Section -->
     <section class="section section-dark" id="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
@@ -1253,7 +1434,7 @@
     <!-- Footer -->
     <footer>
         <div class="footer-logo">
-            <img src="retreat.jpg" alt="FFI Logo">
+            <img src="logo.png" alt="FFI Logo">
         </div>
         <div class="footer-content">
             <h3 style="font-family: 'Cinzel', serif; margin-bottom: 15px;">Franciscan Friars of the Immaculate</h3>
@@ -1275,6 +1456,7 @@
         <a href="#booking" class="btn-primary">Make a Booking</a>
     </div>
 
+    
     
     <script>
         // Slider functionality
@@ -1346,293 +1528,290 @@
             });
         });
 
-        // Form multi-step functionality
-        let currentStep = 1;
-        const totalSteps = 4;
-        let isGroupBooking = false;
+        // NEW BOOKING FORM FUNCTIONALITY
+        document.addEventListener('DOMContentLoaded', function () {
 
-        function nextStep() {
-            if (validateStep(currentStep)) {
-                document.getElementById(`step${currentStep}`).classList.remove('active');
-                currentStep++;
-                if (currentStep <= totalSteps) {
-                    document.getElementById(`step${currentStep}`).classList.add('active');
-                    // Check if we need to show group fields
-                    if (currentStep === 4) {
-                        updateSubmitButtonState();
+        // BLOCKED DATES - Add dates you want to block in YYYY-MM-DD format
+    const blockedDates = [
+        "2026-04-15",  // Example: Good Friday
+        "2026-04-16",  // Example: Easter Saturday
+        "2026-04-17",  // Example: Easter Sunday
+        "2026-12-25",
+        ''  // Example: Christmas
+        // Add more dates as needed - format: "YYYY-MM-DD"
+    ];
+
+    // Check if date is blocked
+    function isDateBlocked(dateString) {
+        return blockedDates.includes(dateString);
+    }
+
+            // Form elements
+            const agreeRules = document.getElementById("agreeRules");
+            const bookingForm = document.getElementById("bookingForm");
+            const rulesCard = document.getElementById("rulesCard");
+            const successMessage = document.getElementById("successMessage");
+            const submitBtn = document.getElementById("submitBtn");
+
+            // File uploads
+            const fileUpload = document.getElementById("fileUpload");
+            const preview = document.getElementById("preview");
+            const warning = document.getElementById("warning");
+            const retreatProgramUpload = document.getElementById("retreatProgramUpload");
+            const retreatProgramPreview = document.getElementById("retreatProgramPreview");
+            const retreatProgramWarning = document.getElementById("retreatProgramWarning");
+
+            // Text inputs
+            const fullName = document.querySelector('input[name="full_name"]');
+            const parishName = document.querySelector('input[name="parish_name"]');
+            const diocese = document.querySelector('input[name="diocese"]');
+            const phoneNumber = document.querySelector('input[name="phone_number"]');
+            const datePicker = document.getElementById("datePicker");
+            const termsCheckbox = document.getElementById("termsCheckbox");
+
+            // Retreat Type & Group Name
+            const retreatRadios = document.querySelectorAll(".retreatType");
+            const groupName = document.getElementById("groupName");
+
+            // Participants
+            const participantsRadios = document.querySelectorAll(".participants");
+            const participantsOther = document.getElementById("participantsOther");
+
+            // Length of stay
+            const lengthRadios = document.querySelectorAll(".lengthStay");
+            const lengthOther = document.getElementById("lengthOther");
+
+            // Purpose
+            const purposeOtherCheck = document.getElementById("purposeOtherCheck");
+            const purposeOther = document.getElementById("purposeOther");
+
+            // Show form after rules accepted
+            agreeRules.addEventListener("change", () => {
+                if(agreeRules.checked){
+                    bookingForm.style.display = "block";
+                    // Smooth scroll to form
+                    bookingForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    bookingForm.style.display = "none";
+                }
+                validateForm();
+            });
+
+            // File upload preview - Recommendation Letter
+            fileUpload.addEventListener("change", () => {
+                if(fileUpload.files.length > 0){
+                    preview.innerHTML = "✅ " + fileUpload.files[0].name + " selected";
+                    preview.style.display = "block";
+                    warning.style.display = "none";
+                } else {
+                    preview.style.display = "none";
+                    warning.style.display = "block";
+                }
+                validateForm();
+            });
+
+            // File upload preview - Retreat Program
+            retreatProgramUpload.addEventListener("change", () => {
+                if(retreatProgramUpload.files.length > 0){
+                    retreatProgramPreview.innerHTML = "✅ " + retreatProgramUpload.files[0].name + " selected";
+                    retreatProgramPreview.style.display = "block";
+                    retreatProgramWarning.style.display = "none";
+                } else {
+                    retreatProgramPreview.style.display = "none";
+                    retreatProgramWarning.style.display = "block";
+                }
+                validateForm();
+            });
+
+            // Input validation listeners
+            fullName.addEventListener("input", validateForm);
+            parishName.addEventListener("input", validateForm);
+            diocese.addEventListener("input", validateForm);
+            phoneNumber.addEventListener("input", validateForm);
+            datePicker.addEventListener("change", validateForm);
+            termsCheckbox.addEventListener("change", validateForm);
+
+            // Retreat type conditional - Group Name
+            retreatRadios.forEach(radio => {
+                radio.addEventListener("change", () => {
+                    if(radio.value === "Group" && radio.checked){
+                        groupName.style.display = "block";
+                        groupName.setAttribute("required", "required");
+                    } else if (radio.value === "Personal" && radio.checked) {
+                        groupName.style.display = "none";
+                        groupName.removeAttribute("required");
+                        groupName.value = "";
                     }
+                    validateForm();
+                });
+            });
+
+            // Participants conditional - Other
+            participantsRadios.forEach(radio => {
+                radio.addEventListener("change", () => {
+                    if(radio.value === "Other" && radio.checked){
+                        participantsOther.style.display = "block";
+                        participantsOther.setAttribute("required", "required");
+                    } else {
+                        participantsOther.style.display = "none";
+                        participantsOther.removeAttribute("required");
+                        participantsOther.value = "";
+                    }
+                    validateForm();
+                });
+            });
+
+            // Length of stay conditional - Other
+            lengthRadios.forEach(radio => {
+                radio.addEventListener("change", () => {
+                    if(radio.value === "Other" && radio.checked){
+                        lengthOther.style.display = "block";
+                        lengthOther.setAttribute("required", "required");
+                    } else {
+                        lengthOther.style.display = "none";
+                        lengthOther.removeAttribute("required");
+                        lengthOther.value = "";
+                    }
+                    validateForm();
+                });
+            });
+
+            // Purpose conditional - Other
+            purposeOtherCheck.addEventListener("change", () => {
+                if(purposeOtherCheck.checked){
+                    purposeOther.style.display = "block";
+                    purposeOther.setAttribute("required", "required");
+                } else {
+                    purposeOther.style.display = "none";
+                    purposeOther.removeAttribute("required");
+                    purposeOther.value = "";
+                }
+                validateForm();
+            });
+
+            // Form validation - enables/disables submit button
+            function validateForm(){
+                // Check if rules are accepted
+                const isRulesAccepted = agreeRules.checked;
+
+                // Check text inputs
+                const isFullNameFilled = fullName.value.trim() !== "";
+                const isParishNameFilled = parishName.value.trim() !== "";
+                const isDioceseFilled = diocese.value.trim() !== "";
+                const isPhoneNumberFilled = phoneNumber.value.trim() !== "";
+                const isDateSelected = datePicker.value !== "";
+
+                // Check file uploads
+                const isRecommendationUploaded = fileUpload.files.length > 0;
+                const isRetreatProgramUploaded = retreatProgramUpload.files.length > 0;
+
+                // Check retreat type selected
+                const isRetreatTypeSelected = document.querySelector('input[name="retreat_type"]:checked') !== null;
+
+                // Check participants selected
+                const isParticipantsSelected = document.querySelector('input[name="participants"]:checked') !== null;
+
+                // Check length of stay selected
+                const isLengthSelected = document.querySelector('input[name="length_of_stay"]:checked') !== null;
+
+                // Check at least one purpose selected
+                const isPurposeSelected = document.querySelectorAll('input[name="purpose"]:checked').length > 0;
+
+                // Check accommodation selected
+                const isAccommodationSelected = document.querySelector('input[name="accommodation"]:checked') !== null;
+
+                // Check meal selected
+                const isMealSelected = document.querySelector('input[name="meal"]:checked') !== null;
+
+                // Check terms accepted
+                const isTermsAccepted = termsCheckbox.checked;
+
+                // All validations
+                const allValid = isRulesAccepted && 
+                                 isFullNameFilled && 
+                                 isParishNameFilled && 
+                                 isDioceseFilled && 
+                                 isPhoneNumberFilled && 
+                                 isDateSelected && 
+                                 isRecommendationUploaded && 
+                                 isRetreatProgramUploaded &&
+                                 isRetreatTypeSelected &&
+                                 isParticipantsSelected &&
+                                 isLengthSelected &&
+                                 isPurposeSelected &&
+                                 isAccommodationSelected &&
+                                 isMealSelected &&
+                                 isTermsAccepted;
+
+                if(allValid){
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitBtn.style.cursor = "pointer";
+                    submitBtn.style.background = "var(--dark-green)";
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = "0.5";
+                    submitBtn.style.cursor = "not-allowed";
+                    submitBtn.style.background = "#ccc";
                 }
             }
-        }
 
-        function prevStep() {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            currentStep--;
-            document.getElementById(`step${currentStep}`).classList.add('active');
-        }
-
-        function validateStep(step) {
-            const currentStepEl = document.getElementById(`step${step}`);
-            const requiredFields = currentStepEl.querySelectorAll('[required]:not([disabled])');
-            let valid = true;
-
-            requiredFields.forEach(field => {
-                // Skip hidden fields
-                if (field.offsetParent === null) {
-                    field.classList.remove('error');
+            // Form submission handler
+            bookingForm.addEventListener("submit", (e) => {
+                // Validate one more time before submission
+                if (!validateAllFields()) {
+                    e.preventDefault();
                     return;
                 }
 
-                if (field.type === 'checkbox' && !field.checked) {
-                    field.classList.add('error');
-                    valid = false;
-                } else if (field.type === 'radio') {
-                    const name = field.name;
-                    const radioGroup = currentStepEl.querySelectorAll(`input[name="${name}"]`);
-                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-                    if (!isChecked) {
-                        radioGroup.forEach(radio => radio.classList.add('error'));
-                        valid = false;
+                // Show success message immediately (form submits in background via iframe)
+                setTimeout(() => {
+                    bookingForm.style.display = "none";
+                    rulesCard.style.display = "none";
+                    successMessage.style.display = "block";
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
+            });
+
+            // Comprehensive validation check
+            function validateAllFields() {
+                const requiredFields = bookingForm.querySelectorAll('[required]:not([disabled])');
+                let allValid = true;
+
+                requiredFields.forEach(field => {
+                    if (field.offsetParent === null) return; // Skip hidden fields
+
+                    if (field.type === 'file' && field.files.length === 0) {
+                        allValid = false;
+                        field.style.borderColor = '#e74c3c';
+                    } else if (field.type === 'radio') {
+                        const name = field.name;
+                        const radioGroup = bookingForm.querySelectorAll(`input[name="${name}"]:checked`);
+                        if (radioGroup.length === 0) {
+                            allValid = false;
+                        }
+                    } else if (!field.value.trim()) {
+                        allValid = false;
+                        field.style.borderColor = '#e74c3c';
                     } else {
-                        radioGroup.forEach(radio => radio.classList.remove('error'));
+                        field.style.borderColor = '#ddd';
                     }
-                } else if (!field.value.trim()) {
-                    field.classList.add('error');
-                    valid = false;
-                } else {
-                    field.classList.remove('error');
-                }
-            });
-
-            return valid;
-        }
-
-        function checkOtherOption(selectElement, fieldId) {
-            const field = document.getElementById(fieldId);
-            if (selectElement.value === 'Other' || selectElement.value === 'Off-Cycle') {
-                field.classList.add('show');
-                const input = field.querySelector('input, textarea');
-                if (input) input.setAttribute('required', 'required');
-            } else {
-                field.classList.remove('show');
-                const input = field.querySelector('input, textarea');
-                if (input) input.removeAttribute('required');
-            }
-        }
-
-        // Toggle booking type - handles group vs individual logic
-        function toggleBookingType(value) {
-            const groupSection = document.getElementById('groupRecommendationSection');
-            const parishPriestName = document.getElementById('parishPriestName');
-            const parishName = document.getElementById('parishName');
-            const priestRecommendation = document.getElementById('priestRecommendation');
-            const individualTab = document.getElementById('individualTab');
-            const groupTab = document.getElementById('groupTab');
-
-            if (value === 'Group') {
-                isGroupBooking = true;
-                // Show group recommendation section
-                groupSection.style.display = 'block';
-                groupSection.classList.add('show');
-
-                // Make fields required for group
-                parishPriestName.setAttribute('required', 'required');
-                parishName.setAttribute('required', 'required');
-                priestRecommendation.setAttribute('required', 'required');
-
-                // Show group rules
-                showRules('group');
-
-                // Update active tab
-                individualTab.classList.remove('active');
-                groupTab.classList.add('active');
-            } else {
-                isGroupBooking = false;
-                // Hide group recommendation section
-                groupSection.style.display = 'none';
-                groupSection.classList.remove('show');
-
-                // Remove required attribute for individual
-                parishPriestName.removeAttribute('required');
-                parishName.removeAttribute('required');
-                priestRecommendation.removeAttribute('required');
-
-                // Show individual rules
-                showRules('individual');
-
-                // Update active tab
-                groupTab.classList.remove('active');
-                individualTab.classList.add('active');
-            }
-
-            // Update submit button state
-            updateSubmitButtonState();
-        }
-
-        function toggleMobilityDetails(show) {
-            const field = document.getElementById('mobilityDetails');
-            if (show) {
-                field.classList.add('show');
-                field.querySelector('textarea').setAttribute('required', 'required');
-            } else {
-                field.classList.remove('show');
-                field.querySelector('textarea').removeAttribute('required');
-            }
-        }
-
-        function toggleBankDetails(value) {
-            const bankDetails = document.getElementById('bankDetails');
-            const otherField = document.getElementById('otherPaymentField');
-
-            if (value === 'Bank Transfer') {
-                bankDetails.style.display = 'block';
-                otherField.classList.remove('show');
-            } else if (value === 'Other') {
-                bankDetails.style.display = 'none';
-                otherField.classList.add('show');
-                otherField.querySelector('input').setAttribute('required', 'required');
-            } else {
-                bankDetails.style.display = 'none';
-                otherField.classList.remove('show');
-                otherField.querySelector('input').removeAttribute('required');
-            }
-        }
-
-        function showRules(type) {
-            // Update tabs
-            document.querySelectorAll('.rules-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            if (event && event.target) {
-                event.target.classList.add('active');
-            } else {
-                document.getElementById(type + 'Tab').classList.add('active');
-            }
-
-            // Update content
-            document.querySelectorAll('.rules-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.getElementById(type + 'Rules').classList.add('active');
-        }
-
-        // Update submit button state based on form completion
-        function updateSubmitButtonState() {
-            const submitBtn = document.getElementById('submitBtn');
-            const termsCheckbox = document.getElementById('termsCheckbox');
-
-            // Check if all required fields in step 4 are filled
-            const step4 = document.getElementById('step4');
-            const requiredFields = step4.querySelectorAll('[required]:not([disabled])');
-            let allFilled = true;
-
-            requiredFields.forEach(field => {
-                // Skip hidden fields
-                if (field.offsetParent === null) return;
-
-                if (field.type === 'checkbox' && !field.checked) {
-                    allFilled = false;
-                } else if (field.type === 'radio') {
-                    const name = field.name;
-                    const radioGroup = step4.querySelectorAll(`input[name="${name}"]`);
-                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
-                    if (!isChecked) allFilled = false;
-                } else if (!field.value.trim()) {
-                    allFilled = false;
-                }
-            });
-
-            // Also check terms checkbox
-            if (!termsCheckbox.checked) {
-                allFilled = false;
-            }
-
-            // Enable/disable submit button
-            if (allFilled) {
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-                submitBtn.style.cursor = 'pointer';
-            } else {
-                submitBtn.disabled = true;
-                submitBtn.style.opacity = '0.5';
-                submitBtn.style.cursor = 'not-allowed';
-            }
-        }
-
-        // Add event listeners to all inputs in step 4 to check submit button state
-        document.addEventListener('DOMContentLoaded', function() {
-            const step4 = document.getElementById('step4');
-            if (step4) {
-                const inputs = step4.querySelectorAll('input, textarea, select');
-                inputs.forEach(input => {
-                    input.addEventListener('change', updateSubmitButtonState);
-                    input.addEventListener('input', updateSubmitButtonState);
-                    input.addEventListener('blur', updateSubmitButtonState);
                 });
-            }
 
-            // Terms checkbox listener
-            const termsCheckbox = document.getElementById('termsCheckbox');
-            if (termsCheckbox) {
-                termsCheckbox.addEventListener('change', updateSubmitButtonState);
+                // Check checkboxes (at least one purpose)
+                const purposeChecked = document.querySelectorAll('input[name="purpose"]:checked').length > 0;
+                if (!purposeChecked) {
+                    allValid = false;
+                }
+
+                // Check terms
+                if (!termsCheckbox.checked) {
+                    allValid = false;
+                }
+
+                return allValid;
             }
         });
-
-        // Form submission
-        document.getElementById('retreatForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Final validation before submit
-            if (!validateStep(4)) {
-                alert('Please fill in all required fields before submitting.');
-                return;
-            }
-
-            // Check terms checkbox
-            const termsCheckbox = document.getElementById('termsCheckbox');
-            if (!termsCheckbox.checked) {
-                alert('Please agree to the terms and conditions.');
-                return;
-            }
-
-            // Check file size if group booking
-            if (isGroupBooking) {
-                const fileInput = document.getElementById('priestRecommendation');
-                if (fileInput.files.length > 0) {
-                    const fileSize = fileInput.files[0].size / 1024 / 1024; // in MB
-                    if (fileSize > 5) {
-                        alert('Recommendation file is too large. Maximum size is 5MB.');
-                        return;
-                    }
-                }
-            }
-
-            const formData = new FormData(this);
-
-            fetch(this.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    for (let i = 1; i <= totalSteps; i++) {
-                        document.getElementById(`step${i}`).style.display = 'none';
-                    }
-                    document.querySelector('.rules-section').style.display = 'none';
-                    document.getElementById('successMessage').classList.add('show');
-                    this.reset();
-                    currentStep = 1;
-                    document.getElementById('step1').classList.add('active');
-                } else {
-                    alert('There was an error submitting your form. Please try again.');
-                }
-            })
-                console.error('Error:', error);
-                alert('There was an error submitting your form. Please try again.');
-            });
-        ;
 
         // Intersection Observer for animations
         const observerOptions = {
@@ -1683,6 +1862,7 @@
             });
         });
     </script>
+
 
 </body>
 </html>
